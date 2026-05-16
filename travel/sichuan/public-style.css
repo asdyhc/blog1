@@ -1,0 +1,136 @@
+ul,li{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: #000000;
+}
+.wrapper{
+  width: 1100px;
+  margin: 0 auto;
+}
+.sizeof1{
+font-size: 14px;
+font-weight: 600;
+}
+.sizeof2{
+font-size: 11px;
+font-weight: 400;
+}
+.sizeof3{
+font-size: 19px;
+font-weight: 400;
+}
+.sizeof4{
+font-size: 16px;
+font-weight: 400;
+}
+.butiful-title{
+  background-color: #eee;
+  width: 200px;
+  height: 30px;
+  margin: 0 auto;
+  box-shadow: 3px 3px black;
+  border: solid 2px black;
+  margin-top: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+.butiful-title::before{
+  font-size: 18px;
+  display: block;
+  background-color:#eee;
+  padding: 0 6px;
+  position:absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  width: 100px;
+  margin: 0 auto;
+text-align: center;
+}
+.butiful-title1::before{
+  content: "景点简介";
+}
+.butiful-title2::before{
+  content: "游览路线";
+}
+.butiful-title3::before{
+  content: "特色美食";
+}
+/* 标题两边的线 */
+.tow-line::before,.tow-line::after{
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin: 0 10px;
+  position: relative;
+  bottom: 5px;
+  border-bottom: solid 2px rgb(255, 0, 0);
+  }
+  p{
+    text-indent: 2em;
+    margin: 0;
+  }
+.main-header .item{
+background-color: aqua;
+cursor: pointer;
+text-align: center;
+height: 40px;
+line-height: 40px;
+z-index: 2;
+}
+.main-header .item1{
+position: fixed;
+right: 0;
+top: 330px;
+}
+.main-header .item2{
+position: fixed;
+right: 0;
+top: 370px;
+}
+.main-header .item:hover .title{
+width: 70px;
+}
+.main-header .item .icon{
+position:fixed;
+right: 0px;
+width: 40px;
+background-color: skyblue;
+}
+.main-header .item .title{
+font-size: 15px;
+font-weight: 600;
+white-space: nowrap;
+background-color: skyblue;
+transition: all 0.2s;
+position: absolute;
+right: 40px;
+width:0px;
+overflow: hidden;
+}
+.main-header .item .title:hover{
+color: white;
+}
+
+
+.main-footer{
+  padding: 20px 0;
+  overflow: auto;
+  background-color: #000000;
+  color: white;
+}
+.main-footer .item{
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+.main-footer .title{
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+}
