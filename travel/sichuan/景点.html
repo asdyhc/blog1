@@ -1,0 +1,2880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>景点</title>
+<link rel="stylesheet" href="public-style.css">
+<!-- 标题和景点换页 -->
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+var item=document.querySelectorAll(".title-window .item")
+var lengthTitle=item[0].offsetWidth
+var items=document.querySelector(".title-window .items")
+var itemPage=document.querySelectorAll(".page-window .item")
+var itemsPage=document.querySelector(".page-window .items")
+var lengthPage=itemPage[0].offsetWidth
+var index=null
+
+item[0].style.backgroundColor="skyblue"
+item[0].style.color="red"
+item[0].style.fontSize="30px"
+
+for(var i=0;i<item.length;i++){
+item[i].addEventListener("mouseout",function(){
+this.style.background=`none`
+})
+item[i].addEventListener("click",function(i){
+item[0].style.background="none"
+item[0].style.color="black"
+item[0].style.fontSize="15px"
+if(index!=null){
+index.style.fontSize="15px"
+index.style.background="none"
+index.style.color="black"
+}
+index=this
+var j
+for(j=0;j<item.length;j++){
+if(this===item[j])
+break
+}
+move(j)
+this.style.fontSize="30px"
+this.style.backgroundColor="skyblue"
+this.style.color="red"
+function move(j){
+items.style.transform=`translateX(${300-j*lengthTitle}px)`;
+itemsPage.style.transform=`translateX(${-j*lengthPage}px)`;
+}
+})
+}
+})
+</script>
+<!-- 关于XXX换页 -->
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+var item=document.querySelectorAll(".page-window>.items>.item")
+for(var i=0;i<10;i++){
+new limbo(item[i])
+}
+function limbo(item){
+var contentItems=item.querySelector(".content3 .items")
+var imgItem=item.querySelectorAll(".content2 .item")
+var img=item.querySelectorAll(".content2 .items .item img")
+var index=null
+for(var i=0;i<imgItem.length;i++){
+imgItem[i].addEventListener("mouseenter",function(){
+if(index){
+index.style.boxShadow="none"
+index.style.transform=`translateY(${0}px)`
+}
+var j
+for(j=0;j<imgItem.length;j++){
+if(this==imgItem[j]){
+break
+}
+}
+console.log(j)
+var x=Math.random()*255
+x=Math.floor(x)
+var y=Math.random()*255
+y=Math.floor(y)
+var z=Math.random()*255
+z=Math.floor(z)
+img[j].style.boxShadow=`10px 5px 5px rgb(${x},${y},${z})`
+img[j].style.transform=`translateY(${-10}px)`
+contentItems.style.transform=`translateX(${-j*1000}px)`
+index=img[j]
+})
+}
+}
+})
+</script>
+<!-- 其它主题 -->
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+var footer=document.querySelector(".footer")
+var title=footer.querySelectorAll(".left .title-nav .title")
+var items=footer.querySelector(".left .items")
+title[0].style.color="skyblue"
+title[0].style.borderBottom="none"
+title[0].style.backgroundColor="white"
+var index=title[0]
+for(var i=0;i<title.length;i++){
+title[i].addEventListener("mouseenter",function(){
+if(index!==null){
+index.style.color="black"
+index.style.borderBottom="solid 1px"
+index.style.backgroundColor="#eee"
+}
+this.style.color="skyblue"
+this.style.borderBottom="none"
+this.style.backgroundColor="white"
+var j
+for(var j=0;j<title.length;j++){
+if(this===title[j])
+break
+}
+items.style.transform =`translateX(${-600*j}px)`
+index=this
+})
+}
+})
+</script>
+<!-- 头部轮播图 -->
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+var item=document.querySelectorAll(".page-window>.items>.item")
+for(var i=0;i<10;i++){
+new limbo(item[i])
+}
+function limbo(itemx){
+var content1=itemx.querySelector(".content1")
+var left=itemx.querySelector(".content1  .left")
+var right=itemx.querySelector(".content1  .right")
+var index=0
+var j
+for(j=0;j<item.length;j++){
+if(item[j]===itemx)
+break
+}
+
+
+if(j===0){
+left.addEventListener("click",function(){
+index--
+if(index===0){
+index=10
+}
+content1.style.backgroundImage=`url("images/稻城亚丁/稻城亚丁\ \(${index}\).jpg")`
+})
+right.addEventListener("click",function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/稻城亚丁/稻城亚丁\ \(${index}\).jpg")`
+})   
+setInterval(function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/稻城亚丁/稻城亚丁\ \(${index}\).jpg")`},3000)
+
+
+}else if(j===1){
+left.addEventListener("click",function(){
+index--
+if(index===0){
+index=10
+}
+content1.style.backgroundImage=`url("images/海螺沟/海螺沟\ \(${index}\).jpg")`
+})
+right.addEventListener("click",function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/海螺沟/海螺沟\ \(${index}\).jpg")`
+})   
+setInterval(function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/海螺沟/海螺沟\ \(${index}\).jpg")`},3000)
+
+
+}else if(j===2){
+left.addEventListener("click",function(){
+index--
+if(index===0){
+index=10
+}
+content1.style.backgroundImage=`url("images/黄龙景区/黄龙景区\ \(${index}\).jpg")`
+})
+right.addEventListener("click",function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/黄龙景区/黄龙景区\ \(${index}\).jpg")`
+})   
+setInterval(function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/黄龙景区/黄龙景区\ \(${index}\).jpg")`},3000)
+
+
+}else if(j===3){
+left.addEventListener("click",function(){
+index--
+if(index===0){
+index=10
+}
+content1.style.backgroundImage=`url("images/阆中古城/阆中古城\ \(${index}\).jpg")`
+})
+right.addEventListener("click",function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/阆中古城/阆中古城\ \(${index}\).jpg")`
+})   
+setInterval(function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/阆中古城/阆中古城\ \(${index}\).jpg")`},3000)
+
+
+}else if(j===4){
+left.addEventListener("click",function(){
+index--
+if(index===0){
+index=10
+}
+content1.style.backgroundImage=`url("images/色达/色达\ \(${index}\).jpg")`
+})
+right.addEventListener("click",function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/色达/色达\ \(${index}\).jpg")`
+})   
+setInterval(function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/色达/色达\ \(${index}\).jpg")`},3000)
+
+
+}else if(j===5){
+left.addEventListener("click",function(){
+index--
+if(index===0){
+index=10
+}
+content1.style.backgroundImage=`url("images/泸沽湖/泸沽湖\ \(${index}\).jpg")`
+})
+right.addEventListener("click",function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/泸沽湖/泸沽湖\ \(${index}\).jpg")`
+})   
+setInterval(function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/泸沽湖/泸沽湖\ \(${index}\).jpg")`},3000)
+
+
+}else if(j===6){
+left.addEventListener("click",function(){
+index--
+if(index===0){
+index=10
+}
+content1.style.backgroundImage=`url("images/蜀南竹海/蜀南竹海\ \(${index}\).jpg")`
+})
+right.addEventListener("click",function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/蜀南竹海/蜀南竹海\ \(${index}\).jpg")`
+})   
+setInterval(function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/蜀南竹海/蜀南竹海\ \(${index}\).jpg")`},3000)
+
+
+}else if(j===7){
+left.addEventListener("click",function(){
+index--
+if(index===0){
+index=10
+}
+content1.style.backgroundImage=`url("images/碧峰峡/碧峰峡\ \(${index}\).jpg")`
+})
+right.addEventListener("click",function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/碧峰峡/碧峰峡\ \(${index}\).jpg")`
+})   
+setInterval(function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/碧峰峡/碧峰峡\ \(${index}\).jpg")`},3000)
+
+
+}else if(j===8){
+left.addEventListener("click",function(){
+index--
+if(index===0){
+index=10
+}
+content1.style.backgroundImage=`url("images/剑门关/剑门关\ \(${index}\).jpg")`
+})
+right.addEventListener("click",function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/剑门关/剑门关\ \(${index}\).jpg")`
+})   
+setInterval(function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/剑门关/剑门关\ \(${index}\).jpg")`},3000)
+
+
+}else{
+var limbo=left.addEventListener("click",function(){
+index--
+if(index===0){
+index=10
+}
+content1.style.backgroundImage=`url("images/理塘/理塘\ \(${index}\).jpg")`
+})
+right.addEventListener("click",function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/理塘/理塘\ \(${index}\).jpg")`
+})   
+setInterval(function(){
+index++
+if(index===10){
+index=1
+}
+content1.style.backgroundImage=`url("images/理塘/理塘\ \(${index}\).jpg")`},3000)
+}
+}
+
+})
+</script>
+<style>
+.wrapper{
+margin: 0 auto;
+width: 1100px;
+}
+.wrapper2{
+margin: 0 auto;
+width: 1000px;
+}
+ul,li{
+list-style: none;
+margin: 0;
+padding: 0;
+}
+body{
+background-color: #eee;
+}
+.title-window{
+margin-top: 30px;
+overflow: hidden;
+width:750px;
+}
+.title-window .items{
+transition: all 0.5s;
+display: flex;
+justify-content: space-between;
+text-align: center;
+width: 1500px;
+}
+.title-window .items .item{
+padding: 3px;
+border-radius: 20px;
+transition: all 0.3s;
+cursor: pointer;
+width:150px;
+height: 50px;
+line-height: 50px;
+}
+.page-window{
+border-radius: 20px 20px 0 0;
+background-color: white;
+overflow: hidden;
+margin-top: 30px;
+
+}
+.page-window>.items{
+transition: all 0.5s;
+width: 11000px;
+display: flex;
+justify-content: space-between;
+}
+.page-window>.items>.item{
+width: 1100px;
+}
+.page-window>.items>.item>.title{
+background: linear-gradient(to right,red,green,blue);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+margin-top: 50px;
+font-weight:300;
+font-size: 30px;
+font-family: "楷体";
+}
+.content1{
+width: 1000px;
+margin: 0 auto;
+position: relative;
+margin-top: 50px;
+height: 400px;
+transition: all 0.4s;
+border-radius: 20px;
+background-image: url("相册-img/相册\ \(13\).png");
+background-position: 90%;
+background-size: cover;
+}
+.content1  .left{
+cursor: pointer;
+left: 10px;
+}
+.content1  .right{
+right: 10px;
+cursor: pointer;
+}
+.content1 .direction{
+text-align: center;
+height: 50px;
+width: 50px;
+font-size: 30px;
+line-height: 48px;
+border-radius: 50%;
+position: absolute;
+top: 0;
+bottom: 0;
+margin: auto 0;
+color: white;
+}
+.content1 .direction:hover{
+background-color: rgba(245, 245, 245,0.5);
+}
+.content2{
+text-align: center;
+}
+.content2>.title{
+margin: 10px 0;
+}
+.content2>.title::before,.content2>.title::after{
+content: "";
+display: inline-block;
+width: 50px;
+height: 50px;
+margin: 0 10px;
+position: relative;
+bottom: 5px;
+border-bottom: solid 2px rgb(255, 0, 0);
+}
+
+.content2 .items{
+display: flex;
+justify-content: space-between;
+}
+.content2 .items .item{
+width: 320px;
+}
+.content2 .items .item img{
+
+transition: all 0.5s;
+border-radius: 20px;
+margin-top: 10px;
+width: 320px;
+height: 200px;
+object-fit: cover;
+display: block;
+cursor: pointer;
+}
+.content3 .window{
+margin-top: 10px;
+overflow: hidden;
+}
+.content3 .items{
+transition: all 0.5s;
+display: flex;
+justify-content: space-between;
+width: 3000px;
+}
+.content3 .items .item{
+width: 1000px;
+}
+.content3 .items .item>.head{
+width: 10px;
+height: 10px;
+background-color: white;
+box-sizing: border-box;
+border: solid 15px white;
+border-bottom:solid 15px #eee;
+}
+.content3 .items .item1>.head{
+margin-left: 145px;
+}
+.content3 .items .item2>.head{
+margin-left: 485px;
+}
+.content3 .items .item3>.head{
+margin-left: 855px;
+}
+.content3 .items .item>.tem{
+box-sizing: border-box;
+background-color: #eee;
+width: 1000px;
+border: 1px solid transparent;
+position: relative;
+}
+.content3 .items .item1 .introduce .left{
+box-sizing: border-box;
+padding: 20px 0;
+}
+.content3 .items .item1 .introduce .left img{
+object-fit: cover;
+border-radius: 20px;
+width: 320px;
+height: 200px;
+}
+.content3 .items .item1 .introduce .right .title{
+font-size: 20px;
+font-weight: 400;
+}
+.content3 .items .item1 .introduce .content{
+width: 900px;
+margin: 0 auto;
+display: flex;
+}
+.content3 .items .item1 .introduce .content .left{
+width: 400px;
+height: 300px;
+}
+.content3 .items .item1 .introduce .content .right{
+box-sizing: border-box;
+padding: 20px;
+width: 600px;
+height: 300px;
+}
+.content3 .items .item1 .introduce .content .right .text{
+margin-top: 20px;
+font-size: 13px;
+letter-spacing: 1px;
+font-weight: 400;
+color: #666;
+}
+.content3 .items .item1 .where{
+width: 900px;
+margin: 0 auto;
+margin-top: 30px;
+display: flex;
+}
+.content3 .items .item1 .where .left{
+height: 350px;
+width: 200px;
+}
+.content3 .items .item1 .where .left img{
+border-radius: 20px;
+height: 300px;
+width: 200px;
+object-fit: cover;
+position: relative;
+top: 20px;
+}
+.content3 .items .item1 .where .right{
+height: 300px;
+width: 700px;
+}
+.content3 .items .item1 .where .right .English{
+letter-spacing: 4px;
+transform-origin: 0% 0%;
+display: inline-block;
+margin-left: 30px;
+transform: rotateZ(90deg);
+border-top: solid 2px;
+position: relative;
+top: 20px;
+}
+.content3 .items .item1 .where .right .title{
+font-size: 20px;
+font-weight: 400;
+padding-left: 50px;
+}
+.content3 .items .item1 .where .right .text{
+margin-top: 20px;
+font-size: 13px;
+letter-spacing: 1px;
+font-size: 400;
+padding-left: 50px;
+color: #666;
+}
+.content3 .items .item1 .history{
+margin: 0 auto;
+margin-bottom: 30px;
+width: 900px;
+margin-top: 30px;
+display: flex;
+}
+.content3 .items .item1 .history .left{
+box-sizing: border-box;
+padding: 0 20px;
+height: 350px;
+width: 600px;
+}
+.content3 .items .item1 .history .left .title{
+border-top: solid 1px green;
+padding: 20px 0 10px 0;
+font-size: 20px;
+font-weight: 400;
+}
+.content3 .items .item1 .history .left .English{
+letter-spacing: 2px;
+}
+.content3 .items .item1 .history .left .text{
+margin-top: 20px;
+font-size: 13px;
+letter-spacing: 1px;
+font-size: 400;
+color: #666;
+}
+.content3 .items .item1 .history .right{
+height: 350px;
+width: 300px;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-content: space-between;
+}
+.content3 .items .item1 .history .right .img1{
+width: 300px;
+height: 160px;
+}
+.content3 .items .item1 .history .right .img1 img{
+border-radius: 20px 20px 0 0;
+width: 300px;
+height: 160px;
+object-fit: cover;
+}
+.content3 .items .item1 .history .right .img2{
+width: 140px;
+height: 170px;
+}
+.content3 .items .item1 .history .right .img2 img{
+border-radius: 0 0 0 20px;
+width: 140px;
+height: 170px;
+object-fit: cover;
+}
+.content3 .items .item1 .history .right .img3 img{
+border-radius: 0 0 20px 0;
+width: 140px;
+height: 170px;
+object-fit: cover;
+}
+.content3 .items .item2 .first{
+width: 10px;
+height: 10px;
+background-color: skyblue;
+position: absolute;
+left:95px;
+top: 70px;
+border-radius: 50%;
+}
+.content3 .items .item2 .last{
+width: 10px;
+height: 10px;
+background-color: skyblue;
+position: absolute;
+left:95px;
+bottom: 16px;
+box-sizing: border-box;
+border: solid 5px #eee;
+border-right: solid 10px skyblue;
+}
+.content3 .items .item2 .content{
+width: 800px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+border-bottom: dashed 2px skyblue;
+}
+.content3 .items .item2 .content .img{
+height: 250px;
+width: 350px;
+background-size: cover;
+box-sizing: border-box;
+}
+.content3 .items .item2 .content img{
+display: block;
+width: 250px;
+height: 200px;
+object-fit: cover;
+margin: 0 auto;
+margin-top: 20px;
+border-radius: 20px;
+}
+.content3 .items .item2 .content:nth-child(-n+2){
+margin-top: 20px;
+}
+.content3 .items .item2 .content:nth-last-child(-n+2){
+margin-bottom: 20px;
+}
+.content3 .items .item2 .content .img:nth-child(n){
+border-left: dashed 2px skyblue;
+}
+.content3 .items .item2 .content .img:nth-child(2n){
+border-right: dashed 2px skyblue;
+border-left: none;
+}
+.content3 .items .item2 .content .container{
+box-sizing: border-box;
+height: 250px;
+width: 550px;
+padding: 10px 20px;
+}
+.content3 .items .item2 .content .container .title{
+margin-top: 20px;
+font-size: 18px;
+font-weight: 400;
+border-bottom: solid 2px skyblue;
+display: inline-block;
+padding-bottom: 5px;
+}
+.content3 .items .item2 .content .container .text{
+color: #666;
+margin-top: 20px;
+font-size: 13px;
+font-weight: 400;
+}
+.content3 .items .item3 .content{
+margin: 0 auto;
+width: 900px;
+height: 200px;
+display: flex;
+}
+.content3 .items .item3 .content .left{
+width: 300px;
+height: 200px;
+border-right: solid 1px #666;
+}
+.content3 .items .item3 .content .right{
+width: 600px;
+height: 200px;
+box-sizing: border-box;
+padding: 20px;
+}
+.content3 .items .item3 .content .right::after{
+content: "";
+display: block;
+width: 10px;
+height: 10px;
+background-color: #666;
+border-radius: 50%;
+position: relative;
+bottom: 60px;
+right: 25px;
+}
+.content3 .items .item3 .content .left img{
+width: 280px;
+height: 150px;
+object-fit: cover;
+border-radius: 20px;
+}
+.content3 .items .item3 .content .right .title{
+font-size: 18px;
+font-weight: 400;
+}
+.content3 .items .item3 .content .right .text{
+color: #666;
+margin-top: 10px;
+font-size: 13px;
+letter-spacing: 1px;
+font-weight: 400;
+}
+.footer{
+margin-bottom: 50px;
+border-radius: 0 0 20px 20px;
+text-align: center;
+background-color: white;
+padding-bottom: 50px;
+}
+.footer>.title{
+margin-bottom: 20px;
+}
+.footer .tem{
+display:flex;
+justify-content:space-between;
+}
+.footer .tem .left{
+width: 600px;
+}
+.footer .tem .left .title-nav{
+display: flex;
+width: 600px;
+height: 50px;
+}
+.footer .tem .left .title-nav>.title{
+cursor: pointer;
+width: 200px;
+height: 50px;
+border: solid 1px #666;
+box-sizing: border-box;
+line-height: 45px;
+background-color: #eee;
+}
+.footer .tem .left .title-nav .title:nth-child(-n+2){
+margin-right: -1px;
+width: 201px;
+}
+.footer .tem .left .window{
+width: 600px;
+height: 400px;
+border: solid 1px #666;
+box-sizing: border-box;
+border-top : none;
+overflow: hidden;
+}
+.footer .tem>.left .window .items{
+transition: all 1s;
+width: 1800px;
+height: 400px;
+display: flex;
+}
+.footer .tem>.left .window .items .item{
+width: 600px;
+height: 400px;
+}
+
+.footer .tem>.left .content{
+display: flex;
+width: 600px;
+height: 200px;
+}
+.footer .tem>.left .content .left{
+width: 200px;
+height: 140px; 
+margin-top: 30px;
+margin-left: 10px;
+}
+.footer .tem>.left .content .left img{
+width: 200px;
+height: 140px; 
+object-fit: cover;
+}
+.footer .tem>.left .content .right{
+position: relative;
+text-align: left;
+width: 400px;
+height: 140px;
+padding: 30px; 
+}.footer .tem>.left .content .right .title{
+margin-bottom: 10px;
+}
+.footer .tem>.left .content .right .button{
+position: absolute;
+right: 30px;
+bottom: 30px;
+display: block;
+width: 100px;
+height: 30px;
+line-height: 30px;
+background-color: #ddd;
+text-align: center;
+border-radius: 20px;
+}
+.footer .tem>.left .content .right .button:hover{
+color: white;
+background-color: black;
+}
+.footer .tem>.right{
+text-align: center;
+width: 380px;
+height: 450px;
+box-sizing: border-box;
+border: solid 1px #666;
+}
+.footer .tem>.right .title{
+width: 150px;
+margin: 0 auto;
+height: 50px;
+line-height: 50px;
+border-bottom: solid 1px;
+}
+.footer .tem>.right .title .tem{
+display: inline-block;
+text-align: center;
+margin: 0 auto;
+border-bottom: solid 3px red;
+position: relative;
+bottom: 1px;
+}
+.footer .tem>.right input{
+outline: none;
+width: 250px;
+position: absolute;
+right: 10px;
+height: 30px;
+}
+.footer .tem>.right select{
+outline: none;
+width: 258px;
+position: absolute;
+right: 10px;
+height: 30px;
+}
+.footer .tem>.right .first{
+
+width: 103px;
+right: 160px;
+}
+.footer .tem>.right .last{
+width: 103px;
+}
+.footer .tem>.right .item{
+font-size:13px;
+margin: 0 auto;
+margin-top: 10px;
+height: 40px;
+text-align: left;
+width: 340px;
+position: relative;
+}
+.footer .tem>.right .item span{
+position: relative;
+left: 140px;
+}
+.footer .tem>.right .submit{
+position: relative;
+left: 30px;
+top: 20px;
+background-color: bisque;
+border: none;
+}
+.footer .tem>.right .submit:hover{
+background-color: red;
+color: white;
+}
+</style>
+</head>
+<body>
+<div class="main-header">
+<div class="item item1">
+<a href="index.html" class="title">首页</a>
+<div class="icon">&#9818;</div>
+</div>
+<div class="item item2">
+<a href="景点.html" class="title">景点</a>
+<div class="icon">&#9819;</div>
+</div>
+</div>
+<div class="title-window wrapper">
+<ul class="items">
+<li class="item itemfirst">稻城亚丁</li>
+<li class="item">海螺场</li>
+<li class="item">黄龙景区</li>
+<li class="item">阆中古城</li>
+<li class="item">色达</li>
+<li class="item">泸沽湖</li>
+<li class="item">蜀南竹海</li>
+<li class="item">碧峰峡</li>
+<li class="item">剑门关</li>
+<li class="item itemlast">理塘</li>
+</ul>
+</div>
+<div class="page-window wrapper">
+<ul class="items">
+<li class="item">
+<div class="title">"稻城亚丁：雪山、海子、草甸，一幅绝美的画卷"</div>
+<div class="content1">
+<div class="direction left">&lt;</div>
+<div class="direction right">&gt;</div>
+</div>
+<div class="content2 wrapper2">
+<div class="title sizeof3">关于稻城亚丁</div>
+<ul class="items">
+<li class="item">
+<div class="title sizeof1">历史文化</div>
+<div class="English sizeof2">History and culcure</div>
+<div class="img"><img src="images/稻城亚丁/稻城亚丁 (1).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">游览路线</div>
+<div class="English sizeof2">Tour route</div>
+<div class="img"><img src="images/稻城亚丁/稻城亚丁 (2).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">特色美食</div>
+<div class="English sizeof2">Special food</div>
+<div class="img"><img src="images/稻城亚丁/稻城亚丁 (3).jpg" alt=""></div>
+</li>
+</ul>
+</div>
+<div class="content3 wrapper2">
+<div class="window">
+<ul class="items">
+
+
+<li class="item item1">
+<div class="head"></div>
+<div class="tem">
+<div class="introduce">
+<div class="butiful-title butiful-title1"></div>
+<div class="content">
+<div class="left"><img src="images/稻城亚丁/稻城亚丁 (4).jpg" alt=""></div>
+<div class="right">
+<div class="title">稻城亚丁&#9758;序言</div>
+<div class="text"><p>稻城亚丁，那片坐落于雪域高原的净土，仿佛是天地间最为纯净的画卷，每一笔、每一划都充满了神秘与魅力。这里，雪山巍峨耸立，云雾缭绕其间，仿佛是大自然最为瑰丽的杰作；这里，森林茂密，溪流潺潺，每一片绿叶、每一滴水珠都诉说着生命的奇迹。</p>
+  <p>《稻城亚丁》不仅仅是一本书，它更是一次心灵的旅程，带你走进那片神秘而美丽的土地，感受那里的自然风光和人文魅力。在这里，你将看到雪山的壮丽、森林的茂密、溪流的清澈；你将听到风的轻唱、水的细语、鸟的欢鸣；你将体验到那里独特的文化和风情，感受到人与自然之间的和谐与共生。</p></div>
+</div>
+</div>
+</div>
+<div class="where">
+<div class="left"><img src="images/稻城亚丁/稻城亚丁 (5).jpg" alt=""></div>
+<div class="right">
+<div class="English">Geographical position</div>
+<div class="title">稻城亚丁&#9758;地理位置</div>
+<div class="text"><p>稻城亚丁位于中国四川省的西南边缘，地处青藏高原的东南部，横断山脉的中段。它坐落在甘孜藏族自治州的南部，其地理位置独特，自然环境优美。</p>
+
+<p>具体来说，稻城县东与九龙县相接，西与乡城县相邻，北接理塘县，南与木里藏族自治县接壤，西南更是与云南迪庆藏族自治州毗邻。而稻城亚丁风景区则更具体地位于稻城县的香格里拉镇，这一地带因其独特的地理位置和自然景观，吸引了无数游客和研究者前来探访。</p>
+
+<p>稻城亚丁的海拔高度差异显著，境内最高海拔达到6032米，而县城的海拔也有3750米。这里的地形复杂多变，群山起伏，苍莽逶迤，给人一种雄伟壮丽的感觉。同时，由于地处高原季风气候区，稻城亚丁绝大多数时间天气晴朗，阳光明媚，自然风光优美，尤其以古冰体遗迹“稻城古冰帽”而著称于世。</p>
+
+<p>此外，稻城亚丁还是四川亚丁国家级自然保护区的一部分，这一保护区拥有丰富的动植物资源，其中包括许多珍稀和特有的物种。保护区的总面积达到了1457.5平方千米，是生物多样性保护的重要区域。</p></div>
+</div>
+</div>
+<div class="history">
+<div class="left">
+<div class="title">稻城亚丁&#9758;历史</div>
+<div class="English">History and culture</div>
+<div class="text"><p>20世纪初，稻城亚丁逐渐为外界所知。美国著名探险家约瑟夫·洛克在20世纪20年代来到这一地区，他的到来为稻城亚丁带来了世界范围内的关注。洛克在稻城亚丁进行了深入的探险和考察，并将这里的美丽风光和独特文化介绍给了全世界。他的著作《消失的地平线》让稻城亚丁成为了人们心中的“最后的香格里拉”。</p>
+
+<p>民国时期，稻城亚丁地区经历了政治上的变革。1939年，西康省成立，稻城正式更名为“稻城县”，这一名称一直沿用至今。新中国成立后，稻城亚丁地区成为了四川省甘孜藏族自治州的一部分，继续保持着其独特的藏族文化和自然风光。</p>
+
+<p>如今的稻城亚丁，已经成为了一个世界闻名的旅游胜地。它以其雄伟的雪峰、碧蓝的湖泊、茂密的原始森林和独特的藏族文化吸引着来自世界各地的游客。同时，稻城亚丁也是科学探险和户外运动的理想之地，吸引着众多科学家和探险家前来探索。</p>
+
+<p>在历史的长河中，稻城亚丁地区经历了无数次的变迁和发展，但始终保持着其独特的魅力和文化底蕴。如今，它已经成为了一个集自然风光、人文历史和现代旅游于一体的综合性景区，为世人展示着这片土地的美丽与传奇。</p></div>
+</div>
+<div class="right">
+<div class="img1"><img src="images/稻城亚丁/稻城亚丁 (6).jpg" alt=""></div>
+<div class="img2"><img src="images/稻城亚丁/稻城亚丁 (7).jpg" alt=""></div>
+<div class="img3"><img src="images/稻城亚丁/稻城亚丁 (8).jpg" alt=""></div>
+</div>
+</div>
+</div>
+</li>
+
+
+<li class="item item2">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title2"></div>
+<div class="first"></div>
+<div class="content">
+<div class="img img1">
+<img src="images/稻城亚丁/稻城亚丁 (9).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">第一天：抵达稻城，适应高原气候</div>
+<div class="text">早上抵达稻城县城，可以先在县城内稍作休息，适应一下高原的气候。这里海拔相对较高，初到高原的朋友可能会有些不适，所以建议不要剧烈运动，慢慢行走，让身体逐渐适应。午餐后，可以前往附近的捧河景区，欣赏神秘的峡谷、沼泽、湿地和苍翠的森林，感受大自然的魅力。</div>          
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">第二天：游览亚丁景区短线，体验自然之美</div>
+<div class="text">早餐后，乘坐大巴前往亚丁景区。首先游览短线景点，包括冲古草甸、冲古寺和珍珠海。冲古草甸是由草地、森林、小溪组成的天然盆景，牦牛在此悠闲吃草，与周围环境和谐共生。沿指示牌前行，便可到达冲古寺，虽然寺院已遭破坏，但仍能感受到其历史的厚重感。从冲古寺出发，步行约半小时即可抵达珍珠海，湖面呈蓝绿色，波光粼粼，是拍摄仙乃日倒影和日落的绝佳地点。</div>  
+</div>
+<div class="img img2">
+<img src="images/稻城亚丁/稻城亚丁 (10).jpg" alt="">
+</div>
+</div>
+<div class="content">
+<div class="img img3">
+<img src="images/稻城亚丁/稻城亚丁 (7).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">第三天：征服亚丁景区长线，领略雪山湖泊的壮丽</div>
+<div class="text">今天将挑战亚丁景区的长线景点，包括洛绒牛场、牛奶海和五色海。洛绒牛场海拔4150米，被三座神山环绕，是观赏雪山的绝佳位置。贡嘎河从草场穿梭而过，林间溪流潺潺，与牧场木屋交相辉映，构成了一幅原始而美丽的画面。继续前行，将抵达牛奶海和五色海，这两个高山湖泊宛如明珠镶嵌在雪山之间，湖水清澈，景色壮美，让人流连忘返。</div>  
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">第五天：离开稻城，留下美好回忆</div>
+<div class="text">在离开稻城之前，可以在县城内逛逛，购买一些当地的特色纪念品，如藏族手工艺品、高原特产等。午餐后，乘坐返程交通工具离开稻城，结束这次难忘的稻城亚丁之旅。在回家的路上，回味着这几天的美好时光，相信你会对稻城亚丁的美景和人文历史留下深刻的印象。</div>  
+</div>
+<div class="img img4">
+<img src="images/稻城亚丁/稻城亚丁 (8).jpg" alt="">
+</div>
+</div>
+<div class="last"></div>
+</div>
+</li>
+
+
+<li class="item item3">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title3"></div>
+<div class="content">
+<div class="left">
+<img src="images/稻城亚丁/青稞酒 (1).jpg.jpg" alt="">
+</div>
+<div class="right">
+<div class="title">青稞酒</div>
+<div class="text">这是藏族人民最喜爱的饮品之一，用青藏高原出产的青稞酿造而成。青稞酒带有淡淡的清香味，口感回甘，而且富含钙、铁、磷等多种微量元素，不仅美味，还对身体有益。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/稻城亚丁/酥油茶 (2).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">酥油茶</div>
+<div class="text">酥油茶是藏族人民的日常饮品，茶汁浓醇，酥油则提供充足的热量，非常适合高寒地区饮用。酥油茶不仅能生津止渴，还能御寒保暖，是高原生活不可或缺的一部分。</div> 
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/稻城亚丁/风干牦牛肉 (3).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">风干牦牛肉</div>
+<div class="text">牦牛是高原的特有物种，其肉质鲜美，营养丰富。经过风干处理的牦牛肉，肉质更加酥松，口感独特，是藏族人民喜爱的美食之一。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/稻城亚丁/稻城松茸炖鸡 (4).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">稻城松茸炖鸡</div>
+<div class="text">这是一道极具特色的高原佳肴。松茸作为珍贵的菌类食材，与高原土鸡一同炖煮，鸡汤中既有鸡肉的鲜甜，又有松茸的淡淡药香，营养价值极高，是稻城亚丁不可多得的美味。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/稻城亚丁/糍粑 (5).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">糌粑</div>
+<div class="text">这是藏族牧民的传统主食，由青稞或豌豆炒熟后磨成面粉制成。糌粑口感软糯、筋道，可以与酥油茶、奶渣、糖等搭配食用，是高原生活中不可或缺的食物。</div>
+</div>
+</div>
+
+</div>
+</li>
+</ul>
+</div>
+</div>
+</li>
+<li class="item">
+<div class="title">"四川海螺场：海洋生态与美食文化的完美融合"</div>
+<div class="content1">
+<div class="direction left">&lt;</div>
+<div class="direction right">&gt;</div>
+</div>
+<div class="content2 wrapper2">
+<div class="title sizeof3">关于海螺场</div>
+<ul class="items">
+<li class="item">
+<div class="title sizeof1">历史文化</div>
+<div class="English sizeof2">History and culcure</div>
+<div class="img"><img src="images/海螺沟/海螺沟 (1).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">游览路线
+</div>
+<div class="English sizeof2">Tour route</div>
+<div class="img"><img src="images/海螺沟/海螺沟 (2).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">特色美食</div>
+<div class="English sizeof2">Special food</div>
+<div class="img"><img src="images/海螺沟/海螺沟 (3).jpg" alt=""></div>
+</li>
+</ul>
+</div>
+<div class="content3 wrapper2">
+<div class="window">
+<ul class="items">
+
+
+<li class="item item1">
+<div class="head"></div>
+<div class="tem">
+<div class="introduce">
+<div class="butiful-title butiful-title1"></div>
+<div class="content">
+<div class="left"><img src="images/海螺沟/海螺沟 (4).jpg" alt=""></div>
+<div class="right">
+<div class="title">海螺场&#9758;序言</div>
+<div class="text"><p>四川海螺场，地处天府之国的心脏地带，自古便是物产丰饶、人文荟萃之地。此地山川秀美，气候宜人，孕育了丰富的自然资源和深厚的文化底蕴。在这片神奇的土地上，海螺场应运而生，成为四川乃至全国海螺产业的重要基地，为地方经济发展注入了强劲动力。</p>
+  <p>海螺，作为海洋生物中的瑰宝，以其独特的形态和珍贵的价值，深受人们的喜爱。而四川海螺场，则凭借得天独厚的地理优势和先进的养殖技术，成功培育出品质上乘、口感鲜美的海螺产品。这些海螺不仅满足了国内外市场的需求，更为四川的海洋产业发展增添了新的亮点。</p></div>
+</div>
+</div>
+</div>
+<div class="where">
+<div class="left"><img src="images/海螺沟/海螺沟 (5).jpg" alt=""></div>
+<div class="right">
+<div class="English">Geographical position</div>
+<div class="title">海螺场&#9758;地理位置</div>
+<div class="text"><p>四川海螺场位于四川盆地东南缘，紧邻长江上游，坐落在风景秀丽的泸州市合江县境内。这里地理位置优越，交通便利，紧邻多条高速公路和铁路线，为海螺场的运输提供了极大的便利。同时，该地区拥有丰富的矿产资源和良好的气候条件，为海螺场的发展提供了得天独厚的自然条件。</p>
+
+<p> 海螺场周边环境优美，山峦叠翠，绿树成荫，空气清新宜人。在这里，你不仅可以感受到大自然的鬼斧神工，还能领略到四川独特的文化风情。当地人民热情好客，民俗活动丰富多彩，为海螺场增添了一抹浓厚的人文色彩。</p>
+
+<p>此外，海螺场还注重环保和可持续发展，采用先进的生产工艺和环保设施，致力于实现绿色、低碳、循环发展。在这里，你可以亲眼目睹海螺场在保护生态环境、推动地方经济发展方面所取得的显著成效。</p></div>
+</div>
+</div>
+<div class="history">
+<div class="left">
+<div class="title">海螺场&#9758;历史</div>
+<div class="English">History and culture</div>
+<div class="text"><p>四川海螺场，作为海螺集团在川东北地区的重要战略布局，其历史可追溯至海螺集团为积极支持四川灾后恢复和革命老区建设而做出的重要决策。海螺场的建设不仅体现了海螺集团对四川地区的深度参与和贡献，也见证了四川工业发展的历程。</p>
+
+<p>在巴中市，这个被誉为“红军之乡”的革命老区，海螺场的建设成为了当地经济发展的一大亮点。海螺场选址在一个昔日杂草丛生、怪石嶙峋的狭长山沟，尽管建设初期面临道路不畅、缺乏大面积平地等种种困难，但海螺集团凭借其坚定的决心和先进的技术，成功克服了这些难题，使得海螺场得以顺利建成投产。</p>
+
+<p>海螺场的建设过程，不仅展示了海螺集团的专业实力，也体现了其对社会责任的积极担当。在建设中，海螺集团始终坚持环保理念，注重节能减排，确保海螺场在运营过程中对环境的影响最小化。同时，海螺场也为当地创造了大量的就业机会，提升了当地居民的生活水平，为巴中市的经济发展注入了新的活力。</p></div>
+</div>
+<div class="right">
+<div class="img1"><img src="images/海螺沟/海螺沟 (6).jpg" alt=""></div>
+<div class="img2"><img src="images/海螺沟/海螺沟 (7).jpg" alt=""></div>
+<div class="img3"><img src="images/海螺沟/海螺沟 (8).jpg" alt=""></div>
+</div>
+</div>
+</div>
+</li>
+
+
+<li class="item item2">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title2"></div>
+<div class="first"></div>
+<div class="content">
+<div class="img img1">
+<img src="images/海螺沟/海螺沟 (6).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">期待着即将展开的探险</div>
+<div class="text">在初秋的晨曦中，我踏上了前往四川海螺场的旅程。心中充满了对这片神秘土地的向往与好奇，想象着那里的风景与人文，期待着即将展开的探险。
+
+一路上，山峦叠嶂，绿意盎然。车窗外，金黄的稻田与翠绿的竹林交相辉映，构成了一幅幅美丽的田园画卷。随着车子的前行，我逐渐感受到了四川的独特魅力。</div>          
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">炊烟袅袅，散发着浓郁的生活气息</div>
+<div class="text">终于，我来到了海螺场。这里是一个隐藏在群山之中的小村落，仿佛与世隔绝，保留着最原始的自然风光和淳朴的民风。一走进村落，我就被眼前的景象所震撼。远处的山峦云雾缭绕，仿佛仙境一般；近处的房屋错落有致，炊烟袅袅，散发着浓郁的生活气息。
+
+我漫步在村落的小径上，感受着这里的宁静与祥和。路边的野花竞相开放，散发出阵阵芬芳；小鸟在枝头欢快地歌唱，仿佛在欢迎我的到来。我走进了一户人家，主人热情地招待我，用当地的特色美食款待我。我品尝着美味的菜肴，听着主人讲述着海螺场的故事，感受到了这里的淳朴与热情。</div>  
+</div>
+<div class="img img2">
+<img src="images/海螺沟/海螺沟 (7).jpg" alt="">
+</div>
+</div>
+<div class="content">
+<div class="img img3">
+<img src="images/海螺沟/海螺沟 (8).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">游览了周边的自然景观</div>
+<div class="text">我参观了当地的海螺养殖场。那里是一片广阔的水域，水面上漂浮着一个个白色的浮标，下面是养殖的海螺。我了解了海螺的养殖过程和营养价值，对这片土地的资源丰富有了更深刻的认识。
+
+除了海螺养殖场，我还游览了周边的自然景观。我攀登了附近的山峰，俯瞰着整个村落和远处的群山，感受到了大自然的壮丽与辽阔。我还漫步在竹林间的小道上，听着竹叶沙沙作响，感受着清新的空气和宁静的氛围。</div>  
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">不舍与留恋</div>
+<div class="text">离开海螺场的时候，我心中充满了不舍与留恋。这片土地给了我太多的惊喜与感动，让我深深地爱上了这里。我相信，在未来的日子里，我还会再次踏上这片土地，继续探索它的美丽与神秘。
+
+这次四川海螺场之旅，让我收获满满。我不仅欣赏到了美丽的自然风光，还体验到了当地的文化和生活。这次旅行让我更加热爱大自然和人文历史，也让我更加珍惜生命中的每一个瞬间。在未来的日子里，我会带着这份美好的回忆和感悟，继续前行，探索更多未知的领域。</div>  
+</div>
+<div class="img img4">
+<img src="images/海螺沟/海螺沟 (9).jpg" alt="">
+</div>
+</div>
+<div class="last"></div>
+</div>
+</li>
+
+
+<li class="item item3">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title3"></div>
+<div class="content">
+<div class="left">
+<img src="images/海螺沟/玉米饼(1).jpg.jpg" alt="">
+</div>
+<div class="right">
+<div class="title">玉米馍</div>
+<div class="text">海螺沟地区阳光充足，气候适宜，使得这里的玉米生长得尤为茂盛。当玉米生长到灌浆阶段时，当地人会将鲜嫩的玉米棒子取下，剥下玉米粒磨成浆，再将玉米浆包裹在玉米壳内，放入蒸笼中蒸熟。这样做出的玉米馍口感香甜，带有浓郁的玉米香味，是海螺沟地区一道不可多得的美食。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/海螺沟/烤土豆 (2).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">烤土豆</div>
+<div class="text">海螺沟的土豆以其独特的风味而闻名。当地居民会从泥土中挖出新鲜的土豆，去除泥土后直接放在火上烤制。烤制过程中，土豆的表皮会变得焦黄酥脆，内部则保持着绵软细腻的口感。再搭配上当地特有的胡椒面和香料，使得烤土豆的味道更加丰富，令人回味无穷。</div> 
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/海螺沟/薄荷炒羊肉 (3).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">薄荷炒羊肉</div>
+<div class="text">这道菜将薄荷的清新与羊肉的鲜美完美结合。海螺沟地区的羊肉质地鲜嫩，搭配上清新的薄荷叶一起炒制，使得羊肉的膻味得到了很好的抑制，同时增添了薄荷的香气。这道菜口感丰富，既有羊肉的鲜嫩多汁，又有薄荷的清爽口感，是海螺沟地区的一道特色佳肴。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/海螺沟/磨西老腊肉 (4).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">磨西老腊肉</div>
+<div class="text">这是海螺沟地区的一道传统美食。当地人采用无污染的半肥瘦猪肉为原料，经过切条、烟熏或自然风干等工序，制作成肥而不腻、浓香扑鼻的老腊肉。在烹饪时，可以搭配当地的野菜或菌类进行蒸煮炒烩，使得腊肉的味道更加清香扑鼻，让人食欲大增。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/海螺沟/坛子肉 (5).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">坛子肉</div>
+<div class="text">这道菜是海螺沟地区的又一特色美食。当地人会将新鲜猪肉过油七分熟后，连同油一起放入土坛罐内保存。食用时取出适量猪肉和油，加入青椒或蒜苗进行煎炒。这样做出的坛子肉颜色鲜亮、肥而不腻、入口即化，是一道极具地方特色的美食。</div>
+</div>
+</div>
+
+</div>
+</li>
+</ul>
+</div>
+</div>
+</li>
+<li class="item">
+<div class="title">"黄龙景区：彩池仙境，龙脉奇观，探秘自然之美"</div>
+<div class="content1">
+<div class="direction left">&lt;</div>
+<div class="direction right">&gt;</div>
+</div>
+<div class="content2 wrapper2">
+<div class="title sizeof3">关于XXX</div>
+<ul class="items">
+<li class="item">
+<div class="title sizeof1">历史文化</div>
+<div class="English sizeof2">History and culcure</div>
+<div class="img"><img src="images/黄龙景区/黄龙景区 (1).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">游览路线</div>
+<div class="English sizeof2">Tour route</div>
+<div class="img"><img src="images/黄龙景区/黄龙景区 (2).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">特色美食</div>
+<div class="English sizeof2">Special food</div>
+<div class="img"><img src="images/黄龙景区/黄龙景区 (3).jpg" alt=""></div>
+</li>
+</ul>
+</div>
+<div class="content3 wrapper2">
+<div class="window">
+<ul class="items">
+
+
+<li class="item item1">
+<div class="head"></div>
+<div class="tem">
+<div class="introduce">
+<div class="butiful-title butiful-title1"></div>
+<div class="content">
+<div class="left"><img src="images/黄龙景区/黄龙景区 (5).jpg" alt=""></div>
+<div class="right">
+<div class="title">黄龙景区&#9758;序言</div>
+<div class="text"><p>黄龙景区，乃大自然之杰作，集山、水、林、洞、瀑、潭、峡等自然景观于一体。在这片神奇的土地上，数以千计的钙化彩池星罗棋布，宛如镶嵌在群山之间的宝石，熠熠生辉。池水清澈见底，在阳光的照耀下呈现出五彩斑斓的色彩，令人叹为观止。此外，黄龙景区的原始森林、雪山峡谷、瀑布飞泉等景观同样令人流连忘返，仿佛置身于一幅幅壮美的画卷之中。</p>
+  <p>黄龙景区不仅拥有得天独厚的自然美景，还承载着丰富的藏族文化。这里的藏族同胞热情好客，信仰虔诚，他们的民俗风情、宗教信仰和建筑风格都体现了深厚的文化底蕴。游客在欣赏美景的同时，还能感受到浓郁的藏族文化氛围，领略到这片土地上独特的人文魅力。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="where">
+<div class="left"><img src="images/黄龙景区/黄龙景区 (6).jpg" alt=""></div>
+<div class="right">
+<div class="English">Geographical position</div>
+<div class="title">黄龙景区&#9758;地理位置</div>
+<div class="text"><p>稻城亚丁位于中国四川省的西南边缘，地处青藏高原的东南部，横断山脉的中段。它坐落在甘孜藏族自治州的南部，其地理位置独特，自然环境优美。</p>
+
+<p>具体来说，稻城县东与九龙县相接，西与乡城县相邻，北接理塘县，南与木里藏族自治县接壤，西南更是与云南迪庆藏族自治州毗邻。而稻城亚丁风景区则更具体地位于稻城县的香格里拉镇，这一地带因其独特的地理位置和自然景观，吸引了无数游客和研究者前来探访。</p>
+
+<p>稻城亚丁的海拔高度差异显著，境内最高海拔达到6032米，而县城的海拔也有3750米。这里的地形复杂多变，群山起伏，苍莽逶迤，给人一种雄伟壮丽的感觉。同时，由于地处高原季风气候区，稻城亚丁绝大多数时间天气晴朗，阳光明媚，自然风光优美，尤其以古冰体遗迹“稻城古冰帽”而著称于世。</p></div>
+</div>
+</div>
+<div class="history">
+<div class="left">
+<div class="title">黄龙景区&#9758;历史</div>
+<div class="English">History and culture</div>
+<div class="text"><p>黄龙景区的历史，最早可以追溯到地质时代的变迁。随着地壳的升降和气候的变迁，这里逐渐形成了独特的钙华地貌。富含碳酸氢钙的地下泉水在出露地表时，由于分压变化，二氧化碳大量逸出，导致碳酸钙过饱和而发生钙沉积，从而形成了今天我们所见的众多彩池。这些彩池形态各异，色彩斑斓，被誉为“人间瑶池”。</p>
+<p>进入近现代，黄龙景区的历史便与人类的开发与保护紧密相连。1982年，中华人民共和国国务院正式审定黄龙为国家重点风景名胜区，标志着黄龙景区开始得到国家的重视与保护。随后，在1986年，国务院旅游协调小组召开会议，专门研究讨论四川省九寨沟、黄龙景区的开发问题，为黄龙景区的进一步开发与管理奠定了基础。</p></div>
+</div>
+<div class="right">
+<div class="img1"><img src="images/黄龙景区/黄龙景区 (8).jpg" alt=""></div>
+<div class="img2"><img src="images/黄龙景区/黄龙景区 (9).jpg" alt=""></div>
+<div class="img3"><img src="images/黄龙景区/黄龙景区 (4).jpg" alt=""></div>
+</div>
+</div>
+</div>
+</li>
+
+
+<li class="item item2">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title2"></div>
+<div class="first"></div>
+<div class="content">
+<div class="img img1">
+<img src="images/黄龙景区/黄龙景区 (7).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">自然风光的向往</div>
+<div class="text">初秋的阳光柔和而温暖，我怀揣着对自然风光的向往，踏上了前往四川黄龙景区的旅程。一路上，山川的轮廓在车窗外流转，我的心也随之飘荡在这片神奇的土地上。</div>          
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">池水清澈见底，五彩斑斓</div>
+<div class="text">抵达黄龙景区，映入眼帘的是一片翠绿的山峦和清澈见底的溪流。我沿着蜿蜒的山路前行，感受着大自然的鬼斧神工。沿途的树木郁郁葱葱，各种野花竞相开放，散发出淡淡的香气，让人陶醉其中。
+
+走到黄龙寺前，我被眼前的景象所震撼。只见一片彩池群如宝石般镶嵌在山谷之间，在阳光的照射下熠熠生辉。这些彩池大小不一，形状各异，有的宛如明镜，有的似玉盘，池水清澈见底，五彩斑斓，宛如人间仙境。</div>  
+</div>
+<div class="img img2">
+<img src="images/黄龙景区/黄龙景区 (8).jpg" alt="">
+</div>
+</div>
+<div class="content">
+<div class="img img3">
+<img src="images/黄龙景区/黄龙景区 (9).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">山水相依，景色如画</div>
+<div class="text">沿着步道继续前行，我来到了黄龙景区的最高点——五彩池。站在这里，放眼望去，只见群山连绵，云海缭绕，仿佛置身于仙境之中。五彩池的水色变幻莫测，时而碧绿如玉，时而湛蓝如海，让人惊叹不已。
+
+在黄龙景区的一天里，我不仅欣赏到了壮丽的自然风光，还感受到了大自然的神奇魅力。这里的山水相依，景色如画，让人流连忘返。</div>  
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">永远铭记在心</div>
+<div class="text">回程的路上，我仍沉浸在黄龙景区的美丽景色中。这次旅行让我更加热爱大自然，也更加珍惜我们身边的美丽风景。黄龙景区，这个人间仙境，我会永远铭记在心。</div>  
+</div>
+<div class="img img4">
+<img src="images/黄龙景区/黄龙景区 (10).jpg" alt="">
+</div>
+</div>
+<div class="last"></div>
+</div>
+</li>
+
+
+<li class="item item3">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title3"></div>
+<div class="content">
+<div class="left">
+<img src="images/黄龙景区/手抓羊肉(1).jpg.jpg" alt="">
+</div>
+<div class="right">
+<div class="title">手抓羊肉</div>
+<div class="text">手抓羊肉是藏区的一道传统美食，以其鲜嫩多汁、口感醇厚而受到游客的喜爱。在黄龙景区，你可以品尝到选用当地优质羊肉制作的手抓羊肉，肉质鲜嫩，入口即化。新鲜的羊肉经过精心挑选和处理后，用传统的烹饪方式炖煮而成。炖煮过程中，羊肉充分吸收了各种调料的味道，使其更加美味可口。羊肉富含蛋白质、维生素和矿物质等营养成分，有助于补充体力、增强免疫力。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/黄龙景区/酥油茶 (2).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">酥油茶</div>
+<div class="text"> 酥油茶是藏族人民日常生活中不可或缺的饮品，也是黄龙景区的一大特色。它以其浓郁的奶香和独特的口感而深受游客喜爱。酥油茶的制作过程相当讲究，需要将茶叶、酥油、盐等原料放入特制的茶壶中，用沸水冲泡并不断搅拌，使酥油充分融入茶水中。酥油茶不仅是藏族人民的传统饮品，也是他们招待客人的重要饮品。在黄龙景区，品尝一杯正宗的酥油茶，不仅可以满足味蕾，还能深入体验藏族文化。</div> 
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/黄龙景区/青稞饼 (3).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">青稞饼</div>
+<div class="text"> 青稞饼是黄龙景区的一种特色小吃，以青稞为主要原料制作而成。青稞饼口感酥脆，带有浓郁的青稞香味，是游客们喜爱的美食之一。青稞经过磨粉、发酵等工序后，制成面团并擀成薄饼状，然后放入油锅中煎炸至金黄色即可。青稞富含膳食纤维和多种维生素，有助于促进消化、增强体力。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/黄龙景区/麻辣火锅 (4).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">麻辣火锅</div>
+<div class="text">麻辣火锅是四川地区的代表性美食之一，在黄龙景区同样受欢迎。火锅以其麻辣鲜香、口感丰富的特点而受到游客的喜爱。火锅底料选用多种辣椒和香料熬制而成，汤底鲜美浓郁。游客可以根据个人口味选择各种肉类、海鲜和蔬菜等食材涮煮。在黄龙景区品尝麻辣火锅，不仅可以享受美食，还能感受到四川地区独特的饮食文化。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/黄龙景区/酸菜面片 (5).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">酸菜面片</div>
+<div class="text"> 酸菜面片是黄龙景区的一道家常美食，以其酸辣可口的味道而受到游客的喜爱。酸菜面片选用当地新鲜的酸菜和面条制作而成，口感爽滑，味道独特。酸菜经过切碎后与面条一起煮熟，再加入调料和辣椒油调味即可。品尝一碗酸菜面片，不仅可以感受到四川地区的酸辣口味，还能体验到当地家常菜的温馨与亲切。
+</div>
+</div>
+</div>
+
+</div>
+</li>
+</ul>
+</div>
+</div>
+</li>
+<li class="item">
+<div class="title">"阆中古城：千年风华，一城古韵，探寻时光里的秘密"</div>
+<div class="content1">
+<div class="direction left">&lt;</div>
+<div class="direction right">&gt;</div>
+</div>
+<div class="content2 wrapper2">
+<div class="title sizeof3">关于阆中古城</div>
+<ul class="items">
+<li class="item">
+<div class="title sizeof1">历史文化</div>
+<div class="English sizeof2">History and culcure</div>
+<div class="img"><img src="images/阆中古城/阆中古城 (1).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">游览路线</div>
+<div class="English sizeof2">Tour route</div>
+<div class="img"><img src="images/阆中古城/阆中古城 (2).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">特色美食</div>
+<div class="English sizeof2">Special food</div>
+<div class="img"><img src="images/阆中古城/阆中古城 (3).jpg" alt=""></div>
+</li>
+</ul>
+</div>
+<div class="content3 wrapper2">
+<div class="window">
+<ul class="items">
+
+
+<li class="item item1">
+<div class="head"></div>
+<div class="tem">
+<div class="introduce">
+<div class="butiful-title butiful-title1"></div>
+<div class="content">
+<div class="left"><img src="images/阆中古城/阆中古城 (4).jpg" alt=""></div>
+<div class="right">
+<div class="title">阆中古城&#9758;序言</div>
+<div class="text"><p>阆中古城，古韵悠悠，历史长河中的一颗璀璨明珠。坐落于四川盆地东北部，嘉陵江畔的这座千年古城，以其深厚的文化底蕴和独特的古城风貌，吸引着无数游客前来探寻历史的足迹，感受古城的魅力。</p>
+<p>古城不仅有着厚重的历史底蕴，还承载着丰富的文化内涵。这里曾是道教、佛教、儒教等多种宗教文化的交汇地，各种文化在此相互融合、共生共存。古城内的张飞庙、五龙庙、滕王阁等古迹，都是历史的见证，文化的传承。</p></div>
+</div>
+</div>
+</div>
+<div class="where">
+<div class="left"><img src="images/阆中古城/阆中古城 (5).jpg" alt=""></div>
+<div class="right">
+<div class="English">Geographical position</div>
+<div class="title">阆中古城&#9758;地理位置</div>
+<div class="text"><p>四川阆中古城位于四川省南充市阆中市阆水中路33号，地处四川盆地东北缘、嘉陵江中游。这座古城位于秦巴山南麓，其地理位置独特，东靠巴中市、仪陇县，南连南部县，西邻剑阁县，北接苍溪县。整个阆中市幅员面积达到1878平方公里，人口众多，其中城区人口就有32万。</p>
+
+<p>阆中古城历史悠久，是古代巴国蜀国的重要军事重镇，也是巴蜀地区的重要交通枢纽。由于其地理位置的重要性，阆中古城在过去的2000多年里一直是巴蜀地区的要冲之地。古城内的建筑风格体现了中国古代的居住风水观，形成了独特的“半珠式”、“品”字型、“多”字型等风格迥异的建筑群体，这些建筑既体现了中国古代城市规划的智慧，也充分展示了阆中古城的独特魅力。</p></div>
+</div>
+</div>
+<div class="history">
+<div class="left">
+<div class="title">阆中古城&#9758;历史</div>
+<div class="English">History and culture</div>
+<div class="text"><p>早在周显王时期，巴国迁都阆中，直到国亡。秦惠文王后元十一年，阆中县始建，隶属于巴郡。此后，阆中历代先后为郡、州、府、道治所，成为川北政治、经济中心和军事重镇。例如，西汉武帝时，阆中天文历算学家落下闳参与创制了《太初历》并改制浑天仪，奠定了浑天说。而在三国时期，张飞曾在此镇守七年，后不幸为部下所害。</p>
+<p>阆中古城的建筑风格独特，体现了中国古代的居住风水观。其棋盘式的古城格局，融南北风格于一体，形成了“半珠式”、“品”字型、“多”字型等风格迥异的建筑群体，是中国古代建城选址“天人合一”完备的典型范例。古城内有张飞庙、永安寺、五龙庙、滕王阁、观音寺、巴巴寺、大佛寺、川北道贡院等众多全国重点文物保护单位，以及众多省级文物保护单位。</p></div>
+</div>
+<div class="right">
+<div class="img1"><img src="images/阆中古城/阆中古城 (6).jpg" alt=""></div>
+<div class="img2"><img src="images/阆中古城/阆中古城 (8).jpg" alt=""></div>
+<div class="img3"><img src="images/阆中古城/阆中古城 (9).jpg" alt=""></div>
+</div>
+</div>
+</div>
+</li>
+
+
+<li class="item item2">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title2"></div>
+<div class="first"></div>
+<div class="content">
+<div class="img img1">
+<img src="images/阆中古城/阆中古城 (7).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">仿佛穿越了时空</div>
+<div class="text">初到四川阆中，我便被这座古城的静谧与古朴深深吸引。阆中，这座有着千年历史的古城，仿佛是一本厚重的历史书，每一砖每一瓦都承载着岁月的痕迹和故事。
+漫步在古城的街道上，仿佛穿越了时空，回到了那个古老而悠远的年代。街道两旁，古色古香的建筑错落有致，青石板铺就的路面光滑如镜，反射着岁月的沧桑。店铺的招牌和门脸，都充满了古色古香的味道，让人仿佛置身于古代的市集之中。</div>          
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">历史悠久的楼阁</div>
+<div class="text">古城内有许多值得一游的景点。滕王阁，这座历史悠久的楼阁，站在楼上，可以俯瞰整个古城的美景，感受那种穿越时空的震撼。华光楼也是一处不可错过的景点，楼内的展览厅陈列着许多与阆中历史相关的文物和古籍书画，让人在欣赏美景的同时，也能深入了解这座古城的历史文化</div>  
+</div>
+<div class="img img2">
+<img src="images/阆中古城/阆中古城 (8).jpg" alt="">
+</div>
+</div>
+<div class="content">
+<div class="img img3">
+<img src="images/阆中古城/阆中古城 (9).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">对味蕾的极致挑逗</div>
+<div class="text">除了历史文化，阆中的美食也是一大亮点。在古城的小吃街上，各种地道的四川小吃琳琅满目，让人垂涎欲滴。我尝试了一碗热腾腾的酸辣粉，那酸爽的味道让人回味无穷。还有麻辣香锅、串串香等美食，每一口都是对味蕾的极致挑逗。
+夜晚的阆中古城别有一番韵味。街头的红灯笼在微风中摇曳，散发出柔和的光芒，为古城增添了几分神秘与浪漫。我漫步在夜色中，感受着这座古城的宁静与美好，仿佛整个世界都慢了下来。</div>  
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">充满诗意和浪漫</div>
+<div class="text">这次阆中之行让我深刻感受到了这座古城的魅力所在。它不仅仅是一座有着悠久历史的古城，更是一个充满诗意和浪漫的地方。在这里，你可以放慢脚步，感受那种慢悠与惬意的生活节奏，也可以深入了解这座古城的历史文化，体验那种穿越时空的奇妙感觉。我相信，每一个来到阆中的人，都会被这座古城的魅力所吸引，留下难忘的回忆</div>  
+</div>
+<div class="img img4">
+<img src="images/阆中古城/阆中古城 (10).jpg" alt="">
+</div>
+</div>
+<div class="last"></div>
+</div>
+</li>
+
+
+<li class="item item3">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title3"></div>
+<div class="content">
+<div class="left">
+<img src="images/阆中古城/银鲜牛肉面 (1).jpg.jpg" alt="">
+</div>
+<div class="right">
+<div class="title">银鲜牛肉面</div>
+<div class="text">这款牛肉面是阆中的招牌美食，其汤汁浓稠，与胡辣汤有着异曲同工之妙。牛肉选材讲究，鲜嫩多汁，每一口都能感受到肉质的细腻与香醇。面条劲道，经过精心烹煮，与浓郁的汤汁完美融合，让人回味无穷。品尝这款牛肉面，仿佛能感受到阆中古城的历史韵味与美食文化的独特魅力。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/阆中古城/白家牛肉 (2).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">白家牛肉</div>
+<div class="text">麻辣牛肉丝是阆中牛肉的代表之一。白家牛肉以其油润鲜香、麻辣可口的特点深受食客喜爱。牛肉丝经过精心腌制和烹制，麻辣味恰到好处，既保留了牛肉的原汁原味，又增添了独特的口感。每一口都能感受到牛肉的鲜嫩与麻辣的刺激，是阆中古城不可多得的美食佳品。</div> 
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/阆中古城/阆中蒸菜 (4).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">阆中蒸菜</div>
+<div class="text">阆中蒸菜以其健康美味的特点受到广泛好评。蒸菜选用各类新鲜食材，通过蒸煮的方式保持食材的原汁原味，不仅营养丰富，而且口感鲜美。无论是蔬菜、肉类还是海鲜，都能在蒸菜的烹饪方式下展现出其最佳的风味。品尝阆中蒸菜，既能满足味蕾的享受，又能享受到健康饮食的乐趣。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/阆中古城/华珍牛肉 (3).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">华珍牛肉</div>
+<div class="text">华珍牛肉在阆中享有极高的声誉。其肉质鲜嫩，口感独特，无论是炖煮还是煎炒，都能展现出其独特的风味。华珍牛肉的独特之处在于其选材和烹饪技艺的完美结合，使得每一口都能品尝到牛肉的鲜美与香醇。在阆中古城，品尝华珍牛肉已经成为一种独特的文化体验。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/阆中古城/张飞牛肉 (5).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">张飞牛肉</div>
+<div class="text">作为阆中的传统美味之一，张飞牛肉以其色、香、味俱佳的特点而闻名。这款牛肉干而不硬，润而不软，外黑内红，色泽诱人。品尝张飞牛肉，可以感受到其独特的口感和浓郁的香味，让人回味无穷。张飞牛肉不仅是阆中的美食代表，也是展示阆中古城历史文化的重要载体之一。</div>
+</div>
+</div>
+
+</div>
+</li>
+</ul>
+</div>
+</div>
+</li>
+<li class="item">
+<div class="title">"色达：四川深处的佛国秘境，红房簇拥中的心灵之旅"</div>
+<div class="content1">
+<div class="direction left">&lt;</div>
+<div class="direction right">&gt;</div>
+</div>
+<div class="content2 wrapper2">
+<div class="title sizeof3">关于色达</div>
+<ul class="items">
+<li class="item">
+<div class="title sizeof1">历史文化</div>
+<div class="English sizeof2">History and culcure</div>
+<div class="img"><img src="images/色达/色达 (1).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">游览路线</div>
+<div class="English sizeof2">Tour route</div>
+<div class="img"><img src="images/色达/色达 (2).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">特色美食</div>
+<div class="English sizeof2">Special food</div>
+<div class="img"><img src="images/色达/色达 (3).jpg" alt=""></div>
+</li>
+</ul>
+</div>
+<div class="content3 wrapper2">
+<div class="window">
+<ul class="items">
+
+
+<li class="item item1">
+<div class="head"></div>
+<div class="tem">
+<div class="introduce">
+<div class="butiful-title butiful-title1"></div>
+<div class="content">
+<div class="left"><img src="images/色达/色达 (4).jpg" alt=""></div>
+<div class="right">
+<div class="title">色达&#9758;序言</div>
+<div class="text"><p>在这片土地上，你可以感受到浓厚的宗教氛围和独特的藏族文化。朝圣者们虔诚地磕着长头，诵经声此起彼伏，回荡在山谷之间。他们的信仰与坚韧，让这片土地更加神圣而庄严。</p>
+
+  <p>色达的自然风光同样令人陶醉。群山环抱，草原广袤，湖泊如镜，每一处都散发着大自然的魅力。在这里，你可以放下尘世的喧嚣，静心聆听大自然的声音，感受内心的宁静与平和。</p></div>
+</div>
+</div>
+</div>
+<div class="where">
+<div class="left"><img src="images/色达/色达 (5).jpg" alt=""></div>
+<div class="right">
+<div class="English">Geographical position</div>
+<div class="title">色达&#9758;地理位置</div>
+<div class="text"><p>色达县位于四川省甘孜藏族自治州西北部，地理坐标大致为北纬31°38′至33°20′，东经98°48′至101°00′。它处于青藏高原东南缘，四川省阿坝州、甘孜州以及青海省果洛州的交界处。具体来说，色达县东邻阿坝藏族羌族自治州的壤塘县，北与青海省的班玛县、达日县接壤，西、南方向则分别与甘孜州的甘孜县、炉霍县毗邻。</p>
+
+<p>色达县地势由西北向东南倾斜，平均海拔达到4127米。全县辖区面积广阔，达到9338.98平方千米。其中，大部分地区为典型的丘状高原，县内的珠日山海拔高度更是达到了4961米。色达的自然条件相对较差，尤其是海拔3500米以下的色尔坝区，由于河流深切和流水浸蚀严重，地貌以高原山原为主，山势陡峭，土地贫瘠，耕地分布零碎，含水保肥力差。而在海拔4000米以上的地区，则以典型的丘原为主，相对高差在500至1000米之间。</p></div>
+</div>
+</div>
+<div class="history">
+<div class="left">
+<div class="title">色达&#9758;历史</div>
+<div class="English">History and culture</div>
+<div class="text"><p>色达古为西羌牧地，唐朝时期属于吐蕃，宋元时期也归吐蕃等路宣慰使司都元帅府管辖。明朝时，色达为乌斯藏据，属朵甘行都指挥使司辖区。明末，瓦修骨系一部迁于色达杜柯，游牧于色柯上游。清朝时期，康区改土归流，但色达并未顺利归诚，因此被视为“野番”居地。民国时期无变化，直到1952年8月色达和平解放，西康省政府建立色达县，属四川甘孜州。1955年11月，经国务院批准正式治县。</p>
+
+<p>在红军长征时期，色达也留下了诸多值得铭记的瞬间和动人的故事。红军进入色达牧区后，面临无粮食和住房等困难，当地的东嘎寺活佛主动为红军提供住房、粮食、马匹等支持。红军为感谢寺院的大力支援，留下了一张盖有印章的借据，并在解放后由政府偿还。此外，还有红军战士因病留在色达，与当地民众结下深厚友谊的故事。</p>
+
+<p>近年来，色达县也取得了一些发展成就。2018年9月25日，色达县获得商务部“2018年电子商务进农村综合示范县”荣誉称号，这在一定程度上推动了当地的经济发展。2020年2月18日，色达县成功退出贫困县行列，实现了经济社会的全面发展。</p></div>
+</div>
+<div class="right">
+<div class="img1"><img src="images/色达/色达 (6).jpg" alt=""></div>
+<div class="img2"><img src="images/色达/色达 (9).jpg" alt=""></div>
+<div class="img3"><img src="images/色达/色达 (10).jpg" alt=""></div>
+</div>
+</div>
+</div>
+</li>
+
+
+<li class="item item2">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title2"></div>
+<div class="first"></div>
+<div class="content">
+<div class="img img1">
+<img src="images/色达/色达 (7).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">所有的烦恼和忧虑都烟消云散</div>
+<div class="text">在繁忙的生活中，我们总是渴望找到一片净土，让心灵得到片刻的宁静。这次，我选择了四川色达，这个被誉为“眼睛的天堂”的地方，开启了一场寻找自我的旅程。
+
+一踏入色达，我就被这里的宁静和纯净所深深吸引。远处的山峦起伏，连绵不绝，仿佛是大地的脊梁，坚定而有力。天空湛蓝如洗，阳光洒落在身上，温暖而舒适。在这里，我仿佛置身于一个与世隔绝的仙境，所有的烦恼和忧虑都烟消云散</div>          
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">五明佛学院</div>
+<div class="text">色达最著名的景点当属五明佛学院，这是世界上最大的藏传佛教学院之一。当我走进学院，只见成片的红房子依山而建，错落有致。每一座房子都是僧侣们的住所，他们在这里修行、学习，追求心灵的解脱。我沿着小路漫步，不时可以看到僧侣们穿着红色的僧袍，在房前屋后忙碌着。他们的脸上洋溢着平静和安详，仿佛已经超越了世俗的纷扰。</div>  
+</div>
+<div class="img img2">
+<img src="images/色达/色达 (8).jpg" alt="">
+</div>
+</div>
+<div class="content">
+<div class="img img3">
+<img src="images/色达/色达 (9).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">古老的东嘎寺</div>
+<div class="text">除了五明佛学院，色达还有许多值得一游的景点。我参观了古老的东嘎寺，感受到了藏传佛教的深厚底蕴；我还登上了珠日神山，俯瞰了整个色达县的美景，那种震撼和感动让我久久不能忘怀。
+
+在色达的日子里，我还品尝了当地的美食。色达藏族以糌粑、面粉、牛羊肉、酥油、奶汁品为主食，每一道菜都充满了浓郁的藏族特色。我尝试了糌粑和酥油茶，那种独特的口感和香味让我至今难以忘怀。</div>  
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">内心的宁静和平和</div>
+<div class="text">然而，色达的海拔较高，对于初次来到这里的游客来说，可能会有一些高原反应。我也不例外，晚上的时候感到有些头晕和乏力。但是，当我看到窗外的星空和远处的佛学院灯火辉煌时，所有的不适都烟消云散了。
+
+这次色达之旅让我收获颇丰。我不仅欣赏到了美丽的自然风光和人文景观，还感受到了藏族人民的淳朴和善良。在这里，我找到了内心的宁静和平和，也对自己的生活有了更深刻的思考。我相信，这次旅行会成为我人生中一段难忘的回忆。</div>  
+</div>
+<div class="img img4">
+<img src="images/色达/色达 (10).jpg" alt="">
+</div>
+</div>
+<div class="last"></div>
+</div>
+</li>
+
+
+<li class="item item3">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title3"></div>
+<div class="content">
+<div class="left">
+<img src="images/色达/色达藏族糍粑 (1).jpg.jpg" alt="">
+</div>
+<div class="right">
+<div class="title">色达藏族糌粑</div>
+<div class="text">糌粑是藏族的主食，色达藏族糌粑更是其中的佼佼者。它是将青稞粮食炒熟后磨成粉，呈现出白色的细腻质地，香味四溢。在糌粑中掺入茶水，再加入少许酥油和奶渣，用手拌匀后捏成坨状食用。这种吃法既能品尝到糌粑的香醇口感，又能体验到藏族独特的饮食文化。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/色达/道孚牛羊肉泡馍 (2).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">道孚牛羊肉泡馍</div>
+<div class="text">道孚牛羊肉泡馍是四川省甘孜州道孚县的特产，也是回族特有的传统风味美食。这道美食以选料严谨、烹制精细、营养丰富、香醇味美而著称。泡馍中的牛羊肉经过精心烹制，肉质鲜嫩多汁，与香浓的汤汁完美结合，让人回味无穷。</div> 
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/色达/康定锅魁 (3).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">康定锅魁</div>
+<div class="text">康定锅魁是色达地区另一款风味独特的美食。它的品种繁多，包括混糖锅魁、油旋子、方方酥、糖锅魁等。这些锅魁外皮酥脆，内馅甜香，每一口都让人感受到浓郁的香甜滋味。康定锅魁不仅是色达地区的美食代表，更是当地人民日常生活中的重要食品，承载着丰富的文化内涵。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/色达/坨坨肉 (4).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">坨坨肉</div>
+<div class="text">坨坨肉是色达地区非常受欢迎的一道美食。以牛羊肉为主料，将肉砍成大块后直接放入水中焖煮。煮熟后的肉质鲜嫩多汁，口感醇厚，充满了原汁原味的肉香。品尝坨坨肉时，人们通常会用小刀将肉削成薄片食用，这种方式既能保留肉质的鲜嫩口感，又能充分体验到色达地区的独特风味。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/色达/青稞饼 (5).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">青稞饼</div>
+<div class="text">青稞饼是以青稞面为主要原料调制烘烤而成的美食。其色泽金黄，散发出诱人的香气，口感香甜可口。青稞饼不仅美味可口，还富含营养，是色达地区人民日常生活中的重要食品。它承载着丰富的藏族文化内涵，是了解色达地区风土人情的重要途径。</div>
+</div>
+</div>
+
+</div>
+</li>
+</ul>
+</div>
+</div>
+</li>
+<li class="item">
+<div class="title">"四川泸沽湖：湖光山色映天蓝，人间仙境醉心田"</div>
+<div class="content1">
+<div class="direction left">&lt;</div>
+<div class="direction right">&gt;</div>
+</div>
+<div class="content2 wrapper2">
+<div class="title sizeof3">关于泸沽湖</div>
+<ul class="items">
+<li class="item">
+<div class="title sizeof1">历史文化</div>
+<div class="English sizeof2">History and culcure</div>
+<div class="img"><img src="images/泸沽湖/泸沽湖 (1).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">游览路线</div>
+<div class="English sizeof2">Tour route</div>
+<div class="img"><img src="images/泸沽湖/泸沽湖 (2).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">特色美食</div>
+<div class="English sizeof2">Special food</div>
+<div class="img"><img src="images/泸沽湖/泸沽湖 (3).jpg" alt=""></div>
+</li>
+</ul>
+</div>
+<div class="content3 wrapper2">
+<div class="window">
+<ul class="items">
+
+
+<li class="item item1">
+<div class="head"></div>
+<div class="tem">
+<div class="introduce">
+<div class="butiful-title butiful-title1"></div>
+<div class="content">
+<div class="left"><img src="images/泸沽湖/泸沽湖 (4).jpg" alt=""></div>
+<div class="right">
+<div class="title">泸沽湖&#9758;序言</div>
+<div class="text"><p>四川泸沽湖，一颗镶嵌在川南高原的璀璨明珠，以其独特的湖光山色和浓郁的摩梭文化，吸引着无数游人的目光。这里，山峦起伏，绿意盎然；湖面宽广，碧波荡漾。在这片神奇的土地上，自然与人文交织，历史与现实交融，共同谱写着一段段美丽的传说。</p>
+
+  <p>泸沽湖，又称左所海，位于四川省盐源县与云南省宁蒗县交界处，是川南高原上一颗璀璨的明珠。这里四周青山环抱，湖水清澈透明，湖面宽广辽阔，如同一块巨大的翡翠镶嵌在群山之间。湖畔，摩梭人的木楞房依山傍水，错落有致，与湖光山色相映成趣，构成了一幅幅美丽的画卷。</p></div>
+</div>
+</div>
+</div>
+<div class="where">
+<div class="left"><img src="images/泸沽湖/泸沽湖 (5).jpg" alt=""></div>
+<div class="right">
+<div class="English">Geographical position</div>
+<div class="title">泸沽湖&#9758;地理位置</div>
+<div class="text"><p>泸沽湖，位于中国四川省凉山彝族自治州盐源县与云南省丽江市宁蒗彝族自治县之间，地处两省交界之处。这座湖泊在行政上由四川省盐源县和云南省宁蒗县共同管辖。泸沽湖是一个高原断层溶蚀陷落湖泊，属长江上游干流金沙江支流雅砻江支流理塘河水系，是小金河的上源，经雅砻江最终流往金沙江。</p>
+
+<p>泸沽湖的具体地理位置位于东经100°43′36″-100°54′20″，北纬27°36′55″-27°47′2″之间。湖泊略呈北西—东南走向，南北长9.5公里，东西宽5.2公里。湖面海拔约2690米，是中国第三深的淡水湖，最大水深达到105.3米，平均水深为40.3米，湖水库容量为22.52亿立方米，湖水最大透明度达12米。泸沽湖的面积约为50.1平方公里，其中四川部分占据了大约31.2平方公里。</p>
+
+<p>泸沽湖四周被群山环抱，格姆女神山高踞湖畔，后龙山楔入湖心，形成了形如马蹄的独特地貌。这样的自然环境赋予了泸沽湖一种原始的美丽，湖水清澈透明，蓝色的湖面像一弯新月静静地躺在群山的环抱中，显得恬静秀丽。泸沽湖因此被摩梭人奉为“母亲湖”。</p></div>
+</div>
+</div>
+<div class="history">
+<div class="left">
+<div class="title">泸沽湖&#9758;历史</div>
+<div class="English">History and culture</div>
+<div class="text"><p>泸沽湖的古名有勒得海、鲁枯湖等，纳西族摩梭语中的“泸”意为山沟，“沽”意为里，因此泸沽湖也被称为“山沟里的湖”。这一称呼不仅描绘了泸沽湖地理位置的特点，也体现了摩梭人对这片土地的深厚情感。</p>
+
+<p> 在历史的长河中，泸沽湖地区曾是多个民族的聚居地，摩梭人、彝族、普米族等民族在这里繁衍生息，形成了独特的民族文化和风俗习惯。摩梭人的母系社会制度、走婚习俗等文化现象，更是吸引了无数人的关注和好奇。</p>
+
+<p>泸沽湖的历史也与众多文人墨客紧密相连。明代的旅行家徐霞客在其著作《徐霞客游记》中对泸沽湖进行了文字记载，将其描述为“四池”，并提及湖中的三岛。清代诗人曹永贤更是以诗赋的形式盛赞泸沽湖如蓬莱仙境，为后人留下了宝贵的文化遗产。</p></div>
+</div>
+<div class="right">
+<div class="img1"><img src="images/泸沽湖/泸沽湖 (6).jpg" alt=""></div>
+<div class="img2"><img src="images/泸沽湖/泸沽湖 (11).jpg" alt=""></div>
+<div class="img3"><img src="images/泸沽湖/泸沽湖 (12).jpg" alt=""></div>
+</div>
+</div>
+</div>
+</li>
+
+
+<li class="item item2">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title2"></div>
+<div class="first"></div>
+<div class="content">
+<div class="img img1">
+<img src="images/泸沽湖/泸沽湖 (7).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">人生就像一场旅行</div>
+<div class="text">曾有人说过，人生就像一场旅行，不在乎目的地，而在乎沿途的风景以及看风景的心情。我深深地认同这句话，尤其是在我踏足四川泸沽湖的那一刻，这种感受更为强烈。
+
+泸沽湖，位于四川与云南的交界处，被誉为中国最后的母系社会，有着独特的摩梭文化。湖面如镜，倒映着蓝天白云和远处的山峦，美得让人心醉。</div>          
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">古朴而原始</div>
+<div class="text">清晨的泸沽湖，宛如一位刚醒来的少女，静谧而清新。我沿着湖边的小径慢慢行走，感受着微风吹过面颊的清凉，听着湖水轻轻拍打着岸边的声音。远处，几艘小船在湖面上缓缓行驶，留下一道道长长的波纹，仿佛是在诉说着古老的故事。
+
+中午时分，我来到了湖边的摩梭村落。这里的房屋都是用木头搭建的，屋顶覆盖着厚厚的草甸，显得古朴而原始。我走进一家小店，品尝了当地特色的酥理玛酒和猪膘肉，那独特的味道让我久久难忘。店主是一位热情的摩梭阿妈，她向我讲述了摩梭人的走婚习俗和母系社会的特点，让我对这个神秘而独特的文化有了更深的了解。</div>  
+</div>
+<div class="img img2">
+<img src="images/泸沽湖/泸沽湖 (8).jpg" alt="">
+</div>
+</div>
+<div class="content">
+<div class="img img3">
+<img src="images/泸沽湖/泸沽湖 (9).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">湖面被染成了一片金黄</div>
+<div class="text">傍晚时分，我再次来到湖边，看着夕阳渐渐落下，湖面被染成了一片金黄。我静静地坐在湖边，感受着这份宁静与美好。这一刻，我仿佛忘记了所有的烦恼和压力，只想沉浸在这份美好中，永远不要醒来。
+
+在泸沽湖的这几天里，我深深地感受到了大自然的美丽和人文的魅力。这里不仅有美丽的风景，还有独特的文化和热情的人民。我相信，这次旅行将会成为我一生中难以忘怀的回忆。</div>  
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">不仅仅是去看风景</div>
+<div class="text">在泸沽湖的这几天里，我深深地感受到了大自然的美丽和人文的魅力。这里不仅有美丽的风景，还有独特的文化和热情的人民。我相信，这次旅行将会成为我一生中难以忘怀的回忆。
+
+旅行不仅仅是去看风景，更是去感受生活，去理解世界。在泸沽湖，我找到了那份宁静与美好，也找到了对生活的新的理解和感悟。我希望在未来的日子里，我能够带着这份感悟和美好，继续前行，去探索更多未知的世界。</div>  
+</div>
+<div class="img img4">
+<img src="images/泸沽湖/泸沽湖 (10).jpg" alt="">
+</div>
+</div>
+<div class="last"></div>
+</div>
+</li>
+
+
+<li class="item item3">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title3"></div>
+<div class="content">
+<div class="left">
+<img src="images/泸沽湖/猪膘肉 (1).jpg.jpg" alt="">
+</div>
+<div class="right">
+<div class="title">猪膘肉</div>
+<div class="text">又称琵琶肉，是泸沽湖畔摩梭人独有的传统美食。其制作过程精细，需将猪的内脏去除，用盐、花椒等调味料涂抹均匀，再缝合晾晒至风干。存放时间越长，风味越佳。猪膘肉肥而不腻，口感醇香，是摩梭人招待贵客的上等佳肴。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/泸沽湖/烤鱼干 (2).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">烤鱼干</div>
+<div class="text">采用泸沽湖特产的巴鱼制作而成。将鱼剖开，去除内脏，撒上盐、花椒和五香粉，置于火塘上或铁锅内缓慢烤干。烤好的鱼干香脆可口，是佐酒佳品。若用清油炸酥，则味道更加鲜美。此外，烤鱼干还可用来煮汤，乳白色的汤汁香味浓郁，营养丰富。</div> 
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/泸沽湖/坨坨肉 (3).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">坨坨肉</div>
+<div class="text">这是彝族独具特色的风味肉食，类似于新疆的“手扒羊肉”。以肥硕的猪、牛、羊肉为原料，制作时不添加任何佐料，直接放入锅中清水煮熟。食用时配上腌制的干酸菜汤，将肉抓在手上边啃边嚼，别有一番风味。坨坨肉肉质鲜美，肥而不腻，是彝族待客的最高礼节</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/泸沽湖/猪血肠 (4).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">猪血肠</div>
+<div class="text">将半熟的米饭与猪血、各种调料香料拌匀后灌入猪肠内，蒸熟后再油炸而成。猪血肠口感鲜美，既有米饭的软糯，又有猪血的鲜香，是摩梭人喜爱的美食之一</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/泸沽湖/苦荞粑粑 (5).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">苦荞粑粑</div>
+<div class="text">这是泸沽湖地区彝族盛行的一种面食。以苦荞粉和水为主要原料，加入一定比例的糖，搓圆、压扁、蒸熟而成。苦荞粑粑表面酥脆，内里软嫩，带有天然的清香和微微的苦味，有助于提神和消化。搭配冬蜂蜜食用，更是苦甜爽口，回味无穷。</div>
+</div>
+</div>
+
+</div>
+</li>
+</ul>
+</div>
+</div>
+</li>
+<li class="item">
+<div class="title">"蜀南竹海：竹的海洋，绿的诗篇"</div>
+<div class="content1">
+<div class="direction left">&lt;</div>
+<div class="direction right">&gt;</div>
+</div>
+<div class="content2 wrapper2">
+<div class="title sizeof3">关于蜀南竹海</div>
+<ul class="items">
+<li class="item">
+<div class="title sizeof1">历史文化</div>
+<div class="English sizeof2">History and culcure</div>
+<div class="img"><img src="images/蜀南竹海/蜀南竹海 (1).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">游览路线</div>
+<div class="English sizeof2">Tour route</div>
+<div class="img"><img src="images/蜀南竹海/蜀南竹海 (2).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">特色美食</div>
+<div class="English sizeof2">Special food</div>
+<div class="img"><img src="images/蜀南竹海/蜀南竹海 (3).jpg" alt=""></div>
+</li>
+</ul>
+</div>
+<div class="content3 wrapper2">
+<div class="window">
+<ul class="items">
+
+
+<li class="item item1">
+<div class="head"></div>
+<div class="tem">
+<div class="introduce">
+<div class="butiful-title butiful-title1"></div>
+<div class="content">
+<div class="left"><img src="images/蜀南竹海/蜀南竹海 (4).jpg" alt=""></div>
+<div class="right">
+<div class="title">蜀南竹海&#9758;序言</div>
+<div class="text"><p>蜀南竹海，不仅是一片竹的海洋，更是一幅生动的画卷。漫步其中，只见万顷碧波荡漾，翠绿欲滴的竹叶在风中摇曳生姿，仿佛置身于一个梦幻般的绿色世界。竹影婆娑，光影斑驳，仿佛是大自然精心绘制的一幅幅绝美的水墨画。</p>
+
+  <p>在这片竹海中，每一处风景都充满了诗意和画意。清晨，当第一缕阳光穿透竹林，洒在竹叶上，金色的光芒与翠绿的竹叶相互映衬，宛如一幅金色的画卷。傍晚时分，夕阳的余晖洒在竹海上，金色的光波在竹林中荡漾，让人陶醉在这如诗如画的美景中。</p></div>
+</div>
+</div>
+</div>
+<div class="where">
+<div class="left"><img src="images/蜀南竹海/蜀南竹海 (5).jpg" alt=""></div>
+<div class="right">
+<div class="English">Geographical position</div>
+<div class="title">蜀南竹海&#9758;地理位置</div>
+<div class="text"><p>蜀南竹海，这个名字便富含着一种深深的绿意和诗意。它位于四川省的西南部，具体坐落在宜宾市的长宁县和江安两县的交界之处。这里是一个自然的宝藏，幅员面积达到了120平方公里，其中核心景区占地44平方公里。这片土地上，茂密的竹林覆盖着27条峻岭和500多座峰峦，犹如一片翠绿的海洋，让人感受到大自然的无尽魅力。</p>
+
+<p>蜀南竹海的地理位置得天独厚，平均海拔高度在600至1000米左右，气候温和宜人。这里的冬天气温一般不会低于0℃，夏天也不会超过30℃，四季如春，是人们理想的避暑胜地。穿行在竹林中，仿佛置身于一个青翠的世界，让人心醉神驰。</p>
+
+<p>不仅如此，蜀南竹海还是一个集自然景观和文物古迹于一体的风景名胜区。这里有竹海博物馆、花溪十三桥、海中海等自然景观，还有古刹等人文景观。竹林茂密，碧波荡漾，风景秀丽，使得蜀南竹海在2001年被国家旅游局评为国家首批4A级旅游区，并在后续的时间里不断获得荣誉，如2022年被批准为全国康养旅游基地，2023年更是新晋为国家级旅游度假区。</p></div>
+</div>
+</div>
+<div class="history">
+<div class="left">
+<div class="title">蜀南竹海&#9758;历史</div>
+<div class="English">History and culture</div>
+<div class="text"><p>关于蜀南竹海的历史，有这样一个传说：三国时诸葛亮七擒孟获，凯旋回朝时途经此地。适逢酷暑，不少战马热死，沮丧的将士们随手把马鞭扔在地上。谁知，马鞭落地后便生出一片苍翠的竹林来。此外，夜郎竹王的神话也流传甚广，据说夜郎国的国王就是竹子所变，这体现了人们对竹子的深厚情感和崇拜。</p>
+
+<p>蜀南竹海不仅有着丰富的历史传说，还是一个重要的旅游度假区。2001年，蜀南竹海被国家旅游局评为国家首批4A级旅游区。近年来，蜀南竹海旅游度假区得到了进一步的发展和完善，2022年8月30日被批准为全国康养旅游基地，2023年6月14日更是新晋为国家级旅游度假区。这里植被覆盖率达92.4%，森林覆盖率达93%，空气中负氧离子含量极高，是一座天然的绿色大氧吧。游客们可以在这里欣赏到竹海博物馆、花溪十三桥、海中海等自然景观，还可以领略到古刹等人文景观的魅力。</p></div>
+</div>
+<div class="right">
+<div class="img1"><img src="images/蜀南竹海/蜀南竹海 (6).jpg" alt=""></div>
+<div class="img2"><img src="images/蜀南竹海/蜀南竹海 (11).jpg" alt=""></div>
+<div class="img3"><img src="images/蜀南竹海/蜀南竹海 (12).jpg" alt=""></div>
+</div>
+</div>
+</div>
+</li>
+
+
+<li class="item item2">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title2"></div>
+<div class="first"></div>
+<div class="content">
+<div class="img img1">
+<img src="images/蜀南竹海/蜀南竹海 (7).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">“天然氧吧”的人间仙境</div>
+<div class="text">近日，我有幸踏足四川的蜀南竹海，这片被誉为“天然氧吧”的人间仙境，让我领略了大自然的鬼斧神工和生命的勃勃生机。
+
+清晨，当第一缕阳光透过竹叶的缝隙洒在地面上，我开始了这次难忘的旅程。竹海中的竹子密密麻麻，犹如一支支翠绿的箭矢直插云霄，形成了一片无边无际的竹的海洋。微风吹过，竹叶沙沙作响，仿佛在诉说着千年的故事。</div>          
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">竹海增添了几分神秘和幽静</div>
+<div class="text">漫步在竹林中，我仿佛置身于一个清凉的世界。空气中弥漫着竹子的清香，让人心旷神怡。阳光透过竹叶的缝隙，洒下斑驳的光影，为这片竹海增添了几分神秘和幽静。</div>  
+</div>
+<div class="img img2">
+<img src="images/蜀南竹海/蜀南竹海 (8).jpg" alt="">
+</div>
+</div>
+<div class="content">
+<div class="img img3">
+<img src="images/蜀南竹海/蜀南竹海 (9).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">沿着溪流漫步</div>
+<div class="text">除了竹林的美景，蜀南竹海还有许多值得一游的景点。我参观了竹文化博物馆，了解了竹子的种类、用途和历史，深刻感受到了竹子在中国文化中的重要地位。此外，我还品尝了当地的竹筒饭和竹笋炒肉，美味可口，让人回味无穷。
+
+在竹海的深处，我还发现了一处清澈的溪流。溪水潺潺，流淌在青石板上，形成了一幅美丽的画卷。我沿着溪流漫步，欣赏着沿途的风景，感受到了大自然的宁静与和谐。</div>  
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">感受竹文化的魅力</div>
+<div class="text">这次蜀南竹海之行让我收获颇丰，不仅领略了大自然的美丽与神奇，还深入了解了竹文化的博大精深。我相信，这次旅行将成为我人生中一段难忘的回忆。
+
+最后，我想说，蜀南竹海是一个值得一游的地方。无论是欣赏竹林的美景，还是感受竹文化的魅力，都能让人在这里找到心灵的宁静与放松。如果你有机会来到四川，一定不要错过这片美丽的竹海。</div>  
+</div>
+<div class="img img4">
+<img src="images/蜀南竹海/蜀南竹海 (10).jpg" alt="">
+</div>
+</div>
+<div class="last"></div>
+</div>
+</li>
+
+
+<li class="item item3">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title3"></div>
+<div class="content">
+<div class="left">
+<img src="images/蜀南竹海/全竹宴 (1).jpg.jpg" alt="">
+</div>
+<div class="right">
+<div class="title">全竹宴</div>
+<div class="text">全竹宴是蜀南竹海度假区的著名风味系列菜品，是旅行必打卡的美食。菜品以竹元素为主题，发掘打造得登峰造极。竹筒可以酿造美味的竹筒酒，竹叶可以炒制清香喷鼻的竹叶茶，还能做出一大桌的人间美味。无论是汤类、蒸菜、炒菜、煮菜还是凉拌菜，每一道精美的菜肴的主题都是竹，名副其实的“全竹宴”。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/蜀南竹海/竹荪炖鸡 (2).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">竹荪炖鸡</div>
+<div class="text">这是一道汤汁浓郁、口感鲜美且营养丰富的佳肴。竹荪作为竹的腐殖质产生的一种真菌，是真菌大家族中营养最丰富、味道最鲜美的菌类。与鸡肉一同炖制，既保持了鸡肉的鲜嫩，又增添了竹荪的清香，让人回味无穷。</div> 
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/蜀南竹海/鸡丝豆腐脑 (3).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">鸡丝豆腐脑</div>
+<div class="text">起源于上世纪三十年代初期的四川省宜宾市，是当地特色小吃之一。豆腐脑口感细腻，加上鸡丝的鲜香，再搭配独特的调料，味道层次丰富，是早餐或下午茶的绝佳选择。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/蜀南竹海/竹筒肉 (4).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">竹筒肉</div>
+<div class="text">选用优质竹子和猪肉制作而成，既有翠竹的清香宜人，又有肉食的鲜香味美。竹筒肉的烹饪方式独特，既保留了食材的原汁原味，又赋予了其独特的竹香，是蜀南竹海不可多得的美食体验。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/蜀南竹海/葡萄井凉糕 (5).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">葡萄井凉糕</div>
+<div class="text">葡萄井凉糕是蜀南竹海的一大特色小吃。其独特之处在于使用葡萄井的泉水制作，使得凉糕口感更加清爽滑嫩。再搭配上特制的调料，甜而不腻，是夏日消暑的佳品。</div>
+</div>
+</div>
+
+</div>
+</li>
+</ul>
+</div>
+</div>
+</li>
+<li class="item">
+<div class="title">"探秘四川碧峰峡：自然奇观与生态宝藏"</div>
+<div class="content1">
+<div class="direction left">&lt;</div>
+<div class="direction right">&gt;</div>
+</div>
+<div class="content2 wrapper2">
+<div class="title sizeof3">关于碧峰峡</div>
+<ul class="items">
+<li class="item">
+<div class="title sizeof1">历史文化</div>
+<div class="English sizeof2">History and culcure</div>
+<div class="img"><img src="images/碧峰峡/碧峰峡 (1).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">游览路线</div>
+<div class="English sizeof2">Tour route</div>
+<div class="img"><img src="images/碧峰峡/碧峰峡 (2).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">特色美食</div>
+<div class="English sizeof2">Special food</div>
+<div class="img"><img src="images/碧峰峡/碧峰峡 (3).jpg" alt=""></div>
+</li>
+</ul>
+</div>
+<div class="content3 wrapper2">
+<div class="window">
+<ul class="items">
+
+
+<li class="item item1">
+<div class="head"></div>
+<div class="tem">
+<div class="introduce">
+<div class="butiful-title butiful-title1"></div>
+<div class="content">
+<div class="left"><img src="images/碧峰峡/碧峰峡 (4).jpg" alt=""></div>
+<div class="right">
+<div class="title">碧峰峡&#9758;序言</div>
+<div class="text"><p>四川碧峰峡，自然之美的集大成者，人间仙境的缩影。此地，群山环抱，峰峦叠翠，峡谷深幽，碧波荡漾。每一步都踏在诗与远方的交织之中，每一眼都沉浸在如画般的风景里。</p>
+
+  <p>碧峰峡，不仅是大自然的杰作，更是历史的见证。这里，古木参天，诉说着千年的沧桑；流水潺潺，吟唱着岁月的歌谣。古老的神话传说，在这片土地上流传，为这片美景增添了几分神秘与浪漫。</p></div>
+</div>
+</div>
+</div>
+<div class="where">
+<div class="left"><img src="images/碧峰峡/碧峰峡 (5).jpg" alt=""></div>
+<div class="right">
+<div class="English">Geographical position</div>
+<div class="title">碧峰峡&#9758;地理位置</div>
+<div class="text"><p>四川碧峰峡位于四川省雅安市雨城区北部的碧峰峡镇，距离雅安市区约16公里。它坐落于陇西河下游，介于东经102°58′至103°3′，北纬29°43′至29°48′之间。这个风景区的地理环境独特，景区面积广阔，达到20平方公里，其中森林面积占据了20000余亩。</p>
+
+<p>碧峰峡景区由两条峡谷构成，左峡长达7公里，而右峡则为2.5公里。这两条峡谷呈现出“V”字形的形态，宽度在30至70米之间，海拔则从700米至1971米不等。峡壁的高度相对较大，约在100至200米之间。这里的自然景观极为丰富，林木葱郁，苍翠欲滴，峰峦叠嶂，崖壑峥嵘。时而有奇峰耸立，直插蓝天，时而两山并立，仅一线天光可见。这些多样的瀑布景观为双峡增添了无限的风光，使人陶醉其中。</p>
+
+<p>鉴于碧峰峡极其优良的自然生态环境，中国保护大熊猫研究中心选择在此设立基地。该基地占地1000余亩，是全球圈养大熊猫数量最多的地方，吸引了大量的国际友人前来参观。此外，碧峰峡镇地势北高南低，海拔在850至1243米之间，属于亚热带常绿阔叶林带，气候温和且雨量充沛，这为当地的生态环境提供了得天独厚的条件。</p></div>
+</div>
+</div>
+<div class="history">
+<div class="left">
+<div class="title">碧峰峡&#9758;历史</div>
+<div class="English">History and culture</div>
+<div class="text"><p>关于碧峰峡的历史，这里有着丰富的传说和文化遗产。碧峰峡是女娲文化的发源地，相传远古时候，水神和火神交战，撞断擎天柱，天塌地陷，苍生呼号。为换救黎民众生，圣母女娲炼五彩石补天，终至雅安因疲劳过度怆然倒下，留下了许多凄美的传说。此外，碧峰峡还与历史上的著名人物有关，例如明朝末年，大西皇帝张献忠的宝藏传说就隐藏在碧峰峡所在的两条大峡谷中，为这片土地增添了几分神秘色彩。</p>
+
+<p>从现代角度看，碧峰峡在1998年由政府统一规划，成都万贯集团投资3亿元进行开发，先后建成生态风景区、生态动物园、极限运动中心、游客接待中心、生态别墅、森林探险等旅游项目及设施。如今，这里不仅是休闲度假、避暑纳凉的绝佳之地，也是人们了解四川历史文化和自然风光的重要窗口。</p>
+
+<p>总的来说，四川碧峰峡的历史丰富而神秘，既有远古女娲文化的传说，又有明朝张献忠宝藏的谜团，加上现代旅游开发的痕迹，使得这片土地充满了独特的魅力和吸引力。</p></div>
+</div>
+<div class="right">
+<div class="img1"><img src="images/碧峰峡/碧峰峡 (6).jpg" alt=""></div>
+<div class="img2"><img src="images/碧峰峡/碧峰峡 (9).jpg" alt=""></div>
+<div class="img3"><img src="images/碧峰峡/碧峰峡 (10).jpg" alt=""></div>
+</div>
+</div>
+</div>
+</li>
+
+
+<li class="item item2">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title2"></div>
+<div class="first"></div>
+<div class="content">
+<div class="img img1">
+<img src="images/碧峰峡/碧峰峡 (7).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">前往碧峰峡的旅程</div>
+<div class="text">那是一个初秋的清晨，阳光透过云层，洒落在四川的大地上，我踏上了前往碧峰峡的旅程。碧峰峡，这个位于四川雅安的名胜之地，以其险峻的山峰、清澈的溪流和丰富的生态资源而闻名。
+
+一路上，车窗外的景色如同画卷般展开，翠绿的山峦、金黄的稻田、蜿蜒的河流，构成了一幅幅美丽的画面。随着车子的行驶，我逐渐感受到了四川的独特魅力，那是一种融合了自然与人文气息的美。</div>          
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">被时光遗忘的秘境</div>
+<div class="text">到达碧峰峡时，已经是午后时分。阳光照耀下的峡谷显得分外幽静，仿佛是一个被时光遗忘的秘境。我沿着峡谷的步道前行，沿途欣赏着那些形态各异的岩石和茂密的植被。每一步都仿佛踏在历史的痕迹上，感受着大自然的鬼斧神工。</div>  
+</div>
+<div class="img img2">
+<img src="images/碧峰峡/碧峰峡 (8).jpg" alt="">
+</div>
+</div>
+<div class="content">
+<div class="img img3">
+<img src="images/碧峰峡/碧峰峡 (9).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">天籁之音，让人心旷神怡</div>
+<div class="text">在峡谷深处，我遇到了一条清澈的溪流。溪水潺潺，如同天籁之音，让人心旷神怡。我蹲下身，用手捧起一捧溪水，清凉的感觉瞬间传遍全身。那一刻，我仿佛与大自然融为了一体，感受到了它的生命力和活力。
+
+除了自然风光，碧峰峡还拥有着丰富的生态资源。在峡谷的周围，我看到了各种野生动物的身影，它们在自然的环境中自由地生活着，展现出了生命的多样性和美丽。</div>  
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">人与自然和谐共处</div>
+<div class="text">傍晚时分，我站在峡谷的高处，眺望着远处的群山和近处的溪流。夕阳的余晖洒在大地上，为这片土地披上了一层金色的外衣。那一刻，我深深地感受到了大自然的壮丽和美丽，也体会到了人与自然和谐共处的重要性。
+
+碧峰峡之行让我收获满满，它不仅让我领略到了四川的自然奇观，更让我对生命和自然有了更深刻的认识。我相信，在未来的日子里，我会更加珍惜自然资源，保护生态环境，让这个世界变得更加美好。</div>  
+</div>
+<div class="img img4">
+<img src="images/碧峰峡/碧峰峡 (10).jpg" alt="">
+</div>
+</div>
+<div class="last"></div>
+</div>
+</li>
+
+
+<li class="item item3">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title3"></div>
+<div class="content">
+<div class="left">
+<img src="images/碧峰峡/砂锅雅鱼  (1).jpg.jpg" alt="">
+</div>
+<div class="right">
+<div class="title">砂锅雅鱼</div>
+<div class="text">砂锅雅鱼是碧峰峡乃至整个雅安地区的名菜，具有悠久的历史和深厚的文化底蕴。这道菜选用当地特产的雅鱼为主料，肉质细嫩、鲜美，几乎无刺，是川中鱼鲜烹饪原料中的上品。其烹饪方式独特，以荥经砂锅为器，慢火细炖，以保持鱼肉的鲜嫩和汤汁的醇厚。砂锅雅鱼口感滑嫩，汤鲜味美，营养丰富，是品尝雅安美食的必选之一。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/碧峰峡/雅笋  (2).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">雅笋</div>
+<div class="text">雅笋是产自碧峰峡高山地区的原生态野生竹笋，纯天然、无污染，被誉为“菜中珍品”。雅笋在春季上市，白嫩香脆，口感鲜美。经过精心烹饪，雅笋可制成多种美食，如炒笋片、炖笋汤等，既保留了竹笋的原始风味，又增添了丰富的口感和营养。</div> 
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/碧峰峡/蒙顶茶  (3).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">蒙顶茶</div>
+<div class="text">蒙顶茶是四川蒙山的特产，自古以来就是贡茶，品质上乘。蒙顶茶品种繁多，包括黄芽、石花、甘露等，每种都有其独特的口感和香气。在碧峰峡，游客不仅可以品尝到正宗的蒙顶茶，还可以欣赏到茶园的美丽风光，体验采茶、制茶的乐趣。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/碧峰峡/棒棒鸡  (4).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">棒棒鸡</div>
+<div class="text">棒棒鸡是荥经县的传统特色美食，已有二百多年的历史。这道菜以当地土鸡为主料，经过精细的刀工和独特的调味工艺制成。棒棒鸡色泽红亮，口感麻辣鲜香，肉质鲜嫩多汁，是开胃下饭的美味佳肴。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/碧峰峡/火锅牛肉粉  (5).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">火锅牛肉粉</div>
+<div class="text">火锅牛肉粉是雅安地区的著名特色小吃。这道菜以牛肉和红薯粉丝为主料，配以火锅汤料和多种调料制成。火锅牛肉粉味道浓郁，汤汁香辣可口，粉丝爽滑劲道，牛肉鲜嫩多汁，是冬日里暖身又美味的选择。</div>
+</div>
+</div>
+
+</div>
+</li>
+</ul>
+</div>
+</div>
+</li>
+<li class="item">
+<div class="title">"一夫当关，万夫莫开——剑门关的险峻与传奇"</div>
+<div class="content1">
+<div class="direction left">&lt;</div>
+<div class="direction right">&gt;</div>
+</div>
+<div class="content2 wrapper2">
+<div class="title sizeof3">关于剑门关</div>
+<ul class="items">
+<li class="item">
+<div class="title sizeof1">历史文化</div>
+<div class="English sizeof2">History and culcure</div>
+<div class="img"><img src="images/剑门关/剑门关 (1).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">游览路线</div>
+<div class="English sizeof2">Tour route</div>
+<div class="img"><img src="images/剑门关/剑门关 (2).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">特色美食</div>
+<div class="English sizeof2">Special food</div>
+<div class="img"><img src="images/剑门关/剑门关 (3).jpg" alt=""></div>
+</li>
+</ul>
+</div>
+<div class="content3 wrapper2">
+<div class="window">
+<ul class="items">
+
+
+<li class="item item1">
+<div class="head"></div>
+<div class="tem">
+<div class="introduce">
+<div class="butiful-title butiful-title1"></div>
+<div class="content">
+<div class="left"><img src="images/剑门关/剑门关 (9).jpg" alt=""></div>
+<div class="right">
+<div class="title">剑门关&#9758;序言</div>
+<div class="text"><p>剑门关，自古以来便是巴蜀之地的险要关隘，承载着丰富的历史底蕴与传奇色彩。今日，我们站在时代的节点上，回望这片古老而神秘的土地，不禁心潮澎湃，感慨万千。</p>
+
+  <p>四川剑门关，位于蜀道之上，地势险峻，易守难攻。自古以来，它便是兵家必争之地，见证了无数英雄豪杰的英勇事迹。在这里，历史的烟云与现实的风景交相辉映，共同诉说着剑门关的传奇故事。</p></div>
+</div>
+</div>
+</div>
+<div class="where">
+<div class="left"><img src="images/剑门关/剑门关 (5).jpg" alt=""></div>
+<div class="right">
+<div class="English">Geographical position</div>
+<div class="title">剑门关&#9758;地理位置</div>
+<div class="text"><p>剑门关位于四川省广元市剑阁县城南15千米处，剑门山中断处，两旁断崖峭壁，直入云霄，峰峦倚天似剑；绝崖断离，两壁相对，其状似门，故称“剑门”。这里是剑门关风景区的标志性景点，享有“剑门天下险”之誉。剑门关隘口形成于白垩纪，是世界罕见的城墙式砾岩断崖丹霞景观，垂直高度近300米，底部最窄处仅50米，是自然天成的天下第一关隘。</p>
+
+<p>剑门关位于大剑山中断处，为东峰营盘嘴，西峰金城山断崖之间的狭谷隘口。两崖石壁如刀砍斧劈，平地拔高150多米，长500多米，顶部宽 100 余米，底部宽 50 多米。大剑溪水绕崖穿石，向北流出隘口，直泻而下，地势异常险峻。历史上，这里曾是重要的军事重镇，诸葛亮、姜维等历史名人都曾在此地驻守或征战。</p>
+
+<p>此外，剑门关风景区还包括翠云廊等紧邻景区，总规划面积84平方千米，核心区面积6平方千米，有观赏景点（区）300余个。剑门关风景区的地理环境独特，地形地貌复杂，地质特点鲜明，气候特征明显，这些自然因素共同铸造了剑门关的奇险和壮丽。</p></div>
+</div>
+</div>
+<div class="history">
+<div class="left">
+<div class="title">剑门关&#9758;历史</div>
+<div class="English">History and culture</div>
+<div class="text"><p>剑门关的历史可以追溯到三国时期，诸葛亮任蜀汉丞相时，见大小剑山之间有阁道三十里，又见大剑山中断处壁高千刃，天开一线，便在此垒石为关，以为屏障，称剑阁，又称剑阁关。后来，姜维等名将也曾在此驻守，利用剑门关的天险抵御外敌。</p>
+
+<p>在漫长的历史长河中，剑门关楼屡遭破坏，但也多次得到修复。明朝时，关楼被重建为飞檐三重的雄伟建筑。清朝修复后的关楼仍为三层，底层以石条砌成拱形关门，有两扇铁皮乳钉大门，门正中镶嵌着“剑阁”二字。关楼之上，堞垛高耸，供人瞭望射击。向北两边石墙，刻有楹联。古道穿过关门通向峡谷，二层关楼高大宏敞，四周通廊，正中悬挂着“天下雄关”的木匾。</p>
+
+<p>然而，民国24年冬，修筑川陕公路时，关楼被拆毁以改建成通道。幸运的是，在关楼遗址右侧，人们建起了一座三棱形石碑，上刻“古剑门关”四字。尽管历经沧桑，剑门关仍保留了众多历史遗迹，如“天下雄关”和清果亲王所书的“第一关”等石刻。</p></div>
+</div>
+<div class="right">
+<div class="img1"><img src="images/剑门关/剑门关 (6).jpg" alt=""></div>
+<div class="img2"><img src="images/剑门关/剑门关 (1).jpg" alt=""></div>
+<div class="img3"><img src="images/剑门关/剑门关 (10).jpg" alt=""></div>
+</div>
+</div>
+</div>
+</li>
+
+
+<li class="item item2">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title2"></div>
+<div class="first"></div>
+<div class="content">
+<div class="img img1">
+<img src="images/剑门关/剑门关 (7).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">蜀道上的一颗璀璨明珠</div>
+<div class="text">早就听闻四川的剑门关是蜀道上的一颗璀璨明珠，这次终于有机会亲自踏上这片古老的土地，感受那份历史的厚重与自然的壮美。
+
+清晨，我们一行人乘车前往剑门关。沿途的风景如诗如画，青山绿水间，仿佛能听到历史的回声。车窗外的田野上，金黄的稻谷随风摇曳，与蓝天白云相映成趣，让人心旷神怡。</div>          
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">群山环绕，云雾缭绕</div>
+<div class="text">抵达剑门关时，阳光正好。我们沿着古老的石阶拾级而上，每一步都踏在千年的历史之上。剑门关的城墙高耸入云，石块间的缝隙里长满了青苔，仿佛在诉说着曾经的辉煌与沧桑。站在城墙上俯瞰四周，群山环绕，云雾缭绕，仿佛置身于一幅壮美的山水画中。
+
+我们穿过狭窄的关道，感受到了古人行走蜀道的不易。关道两旁，峭壁陡峭，仿佛随时都会崩塌下来。但正是这种险峻，更显得剑门关的雄伟与险要。在这里，我仿佛能听到金戈铁马的声音，感受到古代战争的激烈与残酷。</div>  
+</div>
+<div class="img img2">
+<img src="images/剑门关/剑门关 (9).jpg" alt="">
+</div>
+</div>
+<div class="content">
+<div class="img img3">
+<img src="images/剑门关/剑门关 (10).jpg" alt="">
+</div>
+<div class="container">
+<div class="title">剑门关的雄伟与险要</div>
+<div class="text">我们穿过狭窄的关道，感受到了古人行走蜀道的不易。关道两旁，峭壁陡峭，仿佛随时都会崩塌下来。但正是这种险峻，更显得剑门关的雄伟与险要。在这里，我仿佛能听到金戈铁马的声音，感受到古代战争的激烈与残酷。
+
+除了历史的厚重，剑门关的自然风光也让人流连忘返。山间绿树成荫，溪水潺潺，鸟语花香。我们在山间漫步，呼吸着清新的空气，感受着大自然的恩赐。偶尔，一只松鼠从树梢跃过，留下一串欢快的笑声，让人的心情也随之愉悦起来。</div>  
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">身体的旅行,心灵的洗礼</div>
+<div class="text">在剑门关的游玩过程中，我们还品尝了当地的美食。四川的麻辣味道让人回味无穷，每一口都充满了惊喜。尤其是当地的特色小吃，更是让人欲罢不能。
+
+傍晚时分，我们依依不舍地离开了剑门关。回首望去，夕阳下的剑门关显得更加庄严与神秘。
+
+剑门关之行，不仅是一次身体的旅行，更是一次心灵的洗礼。我相信，在未来的日子里，我会更加努力地生活，更加珍惜每一个美好的瞬间。</div>  
+</div>
+<div class="img img4">
+<img src="images/剑门关/剑门关 (1).jpg" alt="">
+</div>
+</div>
+<div class="last"></div>
+</div>
+</li>
+
+
+<li class="item item3">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title3"></div>
+<div class="content">
+<div class="left">
+<img src="images/剑门关/剑门关豆腐 (1).jpg.jpg" alt="">
+</div>
+<div class="right">
+<div class="title">剑门关豆腐</div>
+<div class="text">剑门关豆腐拥有2000多年的悠久历史，并荣获“中国国家地理标志产品”的殊荣。其独特的口感和丰富的营养价值使其成为剑门关地区的一张美食名片。剑门关豆腐以本地山区特有的小黄豆为原料，采用当地优质的剑泉水，经过石磨磨浆等传统手工制作工序精心制作而成。豆腐嫩白细腻、爽口清香，无论是炒、炸、烧、蒸、煎还是凉拌，都能展现出其独特的美味。在剑门关古镇，游客可以品尝到集多种烹饪工艺于一体的“剑门豆腐宴”，其菜品多达280余种，味道各异，让人回味无穷。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/剑门关/剑门火腿 (2).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">剑门火腿</div>
+<div class="text">剑门火腿是剑阁县的地方名产，以其独特的制作工艺和绝佳的口感而备受赞誉。火腿选用肥瘦相间的猪肉，经过精心腌制和发酵而成，肉质鲜美、口感醇厚。无论是炖、煮还是拌，都能凸显出剑门火腿的独特风味。在剑门关地区，人们常用剑门火腿与当地的土鸡结合，制作出养生滋补的“剑门土鸡煲”，让人品尝到火腿与土鸡完美融合的鲜美滋味。</div> 
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/剑门关/怀胎豆腐 (3).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">怀胎豆腐</div>
+<div class="text">怀胎豆腐是剑门关地区的一道特色菜品，以其独特的制作方法和浓郁的酱香味道而著称。这道菜以豆腐为主料，内裹肉沫，经过精心烹饪后，豆腐外酥里嫩，肉沫鲜美可口，酱香四溢。品尝怀胎豆腐，不仅可以感受到豆腐的细腻口感，还能品味到肉沫的鲜香和酱香的浓郁，让人回味无穷。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/剑门关/白龙豆花稀饭 (4).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">白龙豆花稀饭</div>
+<div class="text">白龙豆花稀饭是剑门关地区的一道家常美食，历史悠久且深受当地人喜爱。这道菜品以豆花和稀饭为主料，搭配香菜、蒜苗、小葱等调料，味道鲜美、口感丰富。豆花口感细腻滑嫩，稀饭则香糯可口，两者相得益彰，再配上独特的调料，让人回味无穷。品尝白龙豆花稀饭，不仅可以满足味蕾的享受，还能感受到剑门关地区独特的饮食文化魅力。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/剑门关/剑门绿茶 (5).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">剑门绿茶</div>
+<div class="text">虽然剑门绿茶并非美食，但它是剑门关地区的一大特色饮品，同样值得一试。剑门绿茶历史悠久，早在唐代就已成名。其生长在海拔千余米的剑门山区，雨量充沛、气候温和、土质肥沃，为茶叶的生长提供了得天独厚的条件。剑门绿茶色泽翠绿、香气清高、滋味鲜爽，具有提神醒脑、清热解毒的功效。在品味剑门美食的同时，泡上一杯剑门绿茶，更能感受到剑门关地区的独特韵味</div>
+</div>
+</div>
+
+</div>
+</li>
+</ul>
+</div>
+</div>
+</li>
+<li class="item">
+<div class="title">"走进四川理塘，感受高原上的纯净与宁静"</div>
+<div class="content1">
+<div class="direction left"><</div>
+<div class="direction right">></div>
+</div>
+<div class="content2 wrapper2">
+<div class="title sizeof3">关于理塘</div>
+<ul class="items">
+<li class="item">
+<div class="title sizeof1">历史文化</div>
+<div class="English sizeof2">History and culcure</div>
+<div class="img"><img src=
+"images/理塘/理塘 (1).jpg" alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">游览路线</div>
+<div class="English sizeof2">Tour route</div>
+<div class="img"><img src="images/理塘/理塘 (2).jpg"  alt=""></div>
+</li>
+<li class="item">
+<div class="title sizeof1">特色美食</div>
+<div class="English sizeof2">Special food</div>
+<div class="img"><img src="images/理塘/理塘 (3).jpg"  alt=""></div>
+</li>
+</ul>
+</div>
+<div class="content3 wrapper2">
+<div class="window">
+<ul class="items">
+
+
+<li class="item item1">
+<div class="head"></div>
+<div class="tem">
+<div class="introduce">
+<div class="butiful-title butiful-title1"></div>
+<div class="content">
+<div class="left"><img src="images/理塘/理塘 (4).jpg"  alt=""></div>
+<div class="right">
+<div class="title">理塘&#9758;序言</div>
+<div class="text"><p>理塘的气候属于高原气候区，具有气温低、冬季长、日照多、辐射强、风力大、水热同期、蒸发量大、干湿季节分明等特点。在这样的环境下，理塘的自然风光别具一格，雪山、草原、河流、牦牛、羊群等构成了一幅幅美丽的画卷。</p>
+
+  <p>在理塘，游客还可以参观历史悠久的藏传佛教寺庙——长青春科尔寺。这座寺庙是康区规模最大、历史最悠久的黄教寺庙，对于了解藏传佛教文化有着重要意义。</p></div>
+</div>
+</div>
+</div>
+<div class="where">
+<div class="left"><img src="images/理塘/理塘 (5).jpg"  alt=""></div>
+<div class="right">
+<div class="English">Geographical position</div>
+<div class="title">理塘&#9758;地理位置</div>
+<div class="text"><p>理塘县位于四川省的西部，地处甘孜藏族自治州西南部，属于青藏高原的东南缘。具体地理位置位于东经99°19′至100°56′，北纬28°57′至30°43′之间。它位于金沙江与雅砻江之间，横断山脉的中段，沙鲁里山纵贯南北。从相邻地区来看，理塘县东与雅江县毗邻，南接木里县、稻城县和乡城县，西与巴塘县相连，北则与白玉县和新龙县接壤。</p>
+
+<p>理塘县的版图南北最长为215公里，东西最宽为155公里，总面积达到了约14351.8平方公里。这里的气候条件相对特殊，平均气温为3.0℃，极端最高气温可以达到25.6℃，而最低气温则可以达到-30.6℃。年平均地面温度为5.9℃，年降雨量为722.2毫米，无霜期仅有50天。日照时间较长，年平均日照时数为2637.7小时，太阳辐射强度大，年太阳辐射量为159.4千卡/平方厘米。冬季气候干冷且漫长，而暖季则相对温凉且短暂。</p>
+
+<p>在土地资源方面，理塘县的土壤主要有高山草甸土、暗棕壤和高山灌丛草甸土等类型。大部分土地资源分布在海拔3600米至4600米之间，形成了垂直分布的特点。从低到高，依次分布着耕地、林地和草地。此外，森林资源丰富，森林覆盖率为7.4%，主要树种包括冷杉、云杉、红杉、高山松等。草地资源也非常丰富，天然草地总面积达到了1235.77万亩，可利用面积989.16万亩，牧草品种繁多，如高山嵩草、四川嵩草等。</p></div>
+</div>
+</div>
+<div class="history">
+<div class="left">
+<div class="title">理塘&#9758;历史</div>
+<div class="English">History and culture</div>
+<div class="text"><p>在唐代，理塘属于吐蕃的统治范围。到了元代，理塘开始有了更为明确的行政设置，先后设立了李塘城、李唐州、奔不儿亦失刚招讨使司以及钱粮总管府等机构，这标志着理塘在政治和经济上的逐渐发展。明清时期，理塘的行政设置进一步完善，先后设立了里塘宣抚司、扎兀东思麻千户所等机构，土司制度在这一时期得到了发展和完善。</p>
+
+<p>近代以来，理塘经历了多次更名和行政归属的变更。1906年，理塘被置为理化县，1914年再次更名为理化县。直到1950年理化县解放后，翌年5月才正式更名为理塘县。</p>
+
+<p>除了行政归属的变迁，理塘在历史上也曾遭受过自然灾害的侵袭。1948年，理塘发生了一次7.3级的地震，造成了大量的人员伤亡和财产损失，显示了自然灾害对当地社会的深刻影响。</p></div>
+</div>
+<div class="right">
+<div class="img1"><img src="images/理塘/理塘 (6).jpg"  alt=""></div>
+<div class="img2"><img src="images/理塘/理塘 (9).jpg"  alt=""></div>
+<div class="img3"><img src="images/理塘/理塘 (10).jpg"  alt=""></div>
+</div>
+</div>
+</div>
+</li>
+
+
+<li class="item item2">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title2"></div>
+<div class="first"></div>
+<div class="content">
+<div class="img img1">
+<img src="images/理塘/理塘 (7).jpg"  alt="">
+</div>
+<div class="container">
+<div class="title">一个被誉为“天空之城”的地方</div>
+<div class="text">四川，这片富饶而美丽的土地，总是吸引着无数旅行者前来探访。而位于四川西部的理塘，更是一个让人心驰神往的地方。这次，我有幸踏足这片神奇的土地，记录下我的所见所感，与大家分享这趟难忘的旅程。
+
+理塘，一个被誉为“天空之城”的地方，海拔高达4014米，是四川进入西藏的最后一个城镇。这里，雪山、草原、白马、野花交织成一幅美丽的画卷，让人仿佛置身于仙境之中。</div>          
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">回到了那个古老的年代</div>
+<div class="text">一进入理塘，我就被那独特的藏族风情所吸引。勒通古镇千户藏寨，火山石板路、手工黄泥墙、彩绘玛尼石、风马祈愿树，每一处都充满了浓厚的藏族文化气息。我漫步在古镇的街头巷尾，仿佛穿越时空，回到了那个古老的年代。
+
+除了古镇，理塘的自然风光也是让人流连忘返。格聂神山巍峨耸立，毛垭大草原广袤无垠，每一处都让人心生敬畏。我站在山顶，俯瞰着这片神奇的土地，心中充满了对大自然的敬畏和感激之情。</div>  
+</div>
+<div class="img img2">
+<img src="images/理塘/理塘 (8).jpg"  alt="">
+</div>
+</div>
+<div class="content">
+<div class="img img3">
+<img src="images/理塘/理塘 (9).jpg"  alt="">
+</div>
+<div class="container">
+<div class="title">当地的民俗文化和历史</div>
+<div class="text">在理塘，我还品尝了当地的特色美食。野生菌松茸味道鲜美，高原鳕鱼鲜嫩可口，每一道菜都让人回味无穷。在品尝美食的同时，我也更深入地了解了当地的民俗文化和历史。
+
+除了美食和文化，理塘的人民也让我印象深刻。他们热情好客，淳朴善良，让我感受到了家的温暖。在理塘的日子里，我和当地的居民交流互动，一起参加藏族的传统活动，度过了一个又一个难忘的时光。</div>  
+</div>
+</div>
+<div class="content">
+<div class="container">
+<div class="title right">渴望一场不一样的旅行</div>
+<div class="text">这次旅行让我收获颇丰，不仅欣赏到了理塘的美景，还深入了解了当地的文化和历史。我相信，在未来的日子里，我还会再次踏足这片神奇的土地，继续探寻它的奥秘和美丽。
+
+四川理塘，一个让人心驰神往的地方。如果你也渴望一场不一样的旅行体验，不妨来理塘走一走、看一看，相信你也会被这里的美丽和神秘所吸引。</div>  
+</div>
+<div class="img img4">
+<img src="images/理塘/理塘 (10).jpg"  alt="">
+</div>
+</div>
+<div class="last"></div>
+</div>
+</li>
+
+
+<li class="item item3">
+<div class="head"></div>
+<div class="tem">
+<div class="butiful-title butiful-title3"></div>
+<div class="content">
+<div class="left">
+<img src="images/理塘/风干牦牛肉 (1).jpg.jpg" alt="">
+</div>
+<div class="right">
+<div class="title">风干牦牛肉</div>
+<div class="text">作为理塘高原的特色美食，风干牦牛肉以其酥松细腻的口感和持久的香味而闻名。制作过程中，新鲜的牦牛肉经过数十种植物调味，采用传统工艺阴凉风干，使得肉质口感饱满，入口有嚼劲。无论是作为小吃还是佐餐佳品，都是理塘不可多得的美食之选。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/理塘/糍粑 (2).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">糌粑</div>
+<div class="text">糌粑是藏民的传统主食，由青稞磨成的面粉制成。它不仅是藏族牧民充饥御寒的重要食物，还因其方便携带而深受喜爱。在理塘，你可以品尝到搭配酥油茶、奶渣和糖搅拌而成的糌粑团，口感丰富，热量高，是体验藏族饮食文化的不二之选。</div> 
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/理塘/高原奶饼子 (3).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">高原奶饼子</div>
+<div class="text">奶饼子是甘孜地区流行的一种传统小吃，也是理塘美食中的佼佼者。奶饼子以鲜奶为原料，经过精心制作而成，口感细腻，奶香浓郁。无论是作为早餐还是下午茶的点心，都是绝佳的选择。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/理塘/团结包子 (4).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">团结包子</div>
+<div class="text">这是四川省甘孜巴塘县的特色美食，以面粉、玉米面、牛肉、猪肉等为主要原料制成。团结包子的外形别致，似包非包，体型庞大，味道鲜香、油而不腻。在理塘，你可以品尝到这道具有浓郁地方特色的美食，感受藏族人民的热情与智慧。</div>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/理塘/高原鳕鱼 (5).jpg.jpg" alt=""></div>
+<div class="right">
+<div class="title">高原鳕鱼</div>
+<div class="text">理塘的高原无鳞鳕鱼是生长在高原河水里的野生鱼类，肉质鲜嫩、爽口。作为理塘的特色美食之一，高原鳕鱼以其独特的口感和营养价值吸引着众多食客。在理塘的餐馆中，你可以品尝到各种以高原鳕鱼为主料制作的美味佳肴。</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</li>
+</ul>
+</div>
+
+
+<div class="footer wrapper">
+<div class="title sizeof3 tow-line">更多主题</div>
+<div class="tem wrapper2">
+<div class="left">
+<div class="title-nav">
+<div class="title sizeof1">文化主题</div>
+<div class="title sizeof1">美食主题</div>
+<div class="title sizeof1">科技主题</div>
+</div>
+<div class="window">
+<div class="items">
+<div class="item">
+<div class="content">
+<div class="left"><img src="images/footer-img/峨眉山.PNG" alt=""></div>
+<div class="right">
+<div class="title sizeof1">峨眉山</div>
+<div class="text sizeof2">峨眉山具有深厚的文化底蕴，融合了佛教、道教、儒家以及武术等多种文化元素。山上的寺庙和佛教建筑，如金顶寺、伏虎寺等，不仅是佛教文化的重要载体，而且保存了大量的佛教文物和艺术品，为研究佛教文化和历史提供了宝贵的资料。同时，峨眉山的道观和儒家建筑也体现了道教和儒家文化的独特魅力。</div>
+<a href="敬请期待.html" class="button sizeof2">查看详情</a>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/footer-img/青城山.PNG" alt=""></div>
+<div class="right">
+<div class="title sizeof1">青城山</div>
+<div class="text sizeof2">青城山不仅是一座自然美景与人文景观相融合的旅游胜地，更是一座承载着深厚道教文化的历史名山。无论是对于喜欢自然风光的游客，还是对于热爱历史文化的游客来说，青城山都是一个值得一游的地方。</div>
+<a href="敬请期待.html" class="button sizeof2">查看详情</a>
+</div>
+</div>
+</div>
+<div class="item">
+<div class="content">
+<div class="left"><img src="images/footer-img/乐山.PNG" alt=""></div>
+<div class="right">
+<div class="title sizeof1">乐山</div>
+<div class="text sizeof2">乐山推出了五张靓丽的城市名片，包括世界遗产文化、佛禅文化、峨眉武术文化、嘉州历史文化以及美食文化。其中，峨眉山、乐山大佛、东风堰三处为世界级遗产。乐山的美食文化也非常丰富，如麻辣烫、钵钵鸡、跷脚牛肉等都是乐山的特色美食，深受游客喜爱。</div>
+<a href="敬请期待.html" class="button sizeof2">查看详情</a>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/footer-img/成都.PNG" alt=""></div>
+<div class="right">
+<div class="title sizeof1">成都</div>
+<div class="text sizeof2">成都，这座被誉为天府之国的城市，不仅以其独特的文化底蕴和悠闲的生活方式吸引着无数游客，更以其美食文化而名扬四海。在成都，美食不仅是一种生活方式，更是一种文化传承和情感的表达。</div>
+<a href="敬请期待.html" class="button sizeof2">查看详情</a>
+</div>
+</div>
+</div>
+<div class="item">
+<div class="content">
+<div class="left"><img src="images/footer-img/绵阳科技馆.PNG" alt=""></div>
+<div class="right">
+<div class="title sizeof1">绵阳科技馆</div>
+<div class="text sizeof2">绵阳科技馆以“两弹一星”精神为核心，以核科技为主线，通过丰富多样的展项，向公众展示导弹、航空航天、卫星与信息、核武器与核科技等多个领域的科技成果。馆内设有导弹展区、航空航天展区、卫星与信息展区、核武器与核科技展区以及科技绵阳等五大板块，每一个展区都蕴含着深厚的科技底蕴和丰富的教育意义。</div>
+<a href="mianyang.html" class="button sizeof2">查看详情</a>
+</div>
+</div>
+<div class="content">
+<div class="left"><img src="images/footer-img/四川科技馆.PNG" alt=""></div>
+<div class="right">
+<div class="title sizeof1">四川科技馆</div>
+<div class="text sizeof2">四川科技馆是一座充满智慧和创意的科技馆。它不仅是市民们学习科学知识、拓展视野的重要场所，也是展示成都市乃至四川省科技实力和文化魅力的重要窗口。在未来，成都科技馆将继续发挥其独特的作用，为公众提供更多优质的科普服务，推动科技文化的传播和发展。</div>
+<a href="敬请期待.html" class="button sizeof2">查看详情</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="right">
+<div class="title sizeof3">
+<div class="tem">我要报名</div></div>
+<form action="" method="post">
+<div class="item">
+目的地<input class="where" type="text">
+</div>
+<div class="item">
+身份证<input class="id" type="number">
+</div>
+<div class="item">
+旅游人数<select name="person-number" id="person-number">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="more">更多</option>
+</select>
+</div>
+<div class="item">
+联系电话<input class="phone-number" type="number">
+</div>
+<div class="item">
+邮箱<input class="e-mail" type="text">
+</div>
+<div class="item">
+时间选择<input class="first" type="date">
+<span>至</span><input class="last" type="date">
+</div>
+<input class="submit" type="submit">
+</form>
+</div>
+</div>
+</body>
+</html>
