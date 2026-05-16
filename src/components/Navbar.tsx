@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Terminal } from 'lucide-react'
+import { Menu, X, Terminal, ExternalLink } from 'lucide-react'
 import { cn } from '@/utils/cn'
 
 const navLinks = [
-  { path: '/', label: '首页' },
-  { path: '/category/web', label: 'Web开发' },
-  { path: '/category/pentest', label: '渗透测试' },
-  { path: '/category/algorithm', label: '算法' },
-  { path: '/about', label: '关于' },
+  { path: '/', label: '首页', external: false },
+  { path: '/category/web', label: 'Web开发', external: false },
+  { path: '/category/pentest', label: '渗透测试', external: false },
+  { path: '/category/algorithm', label: '算法', external: false },
+  { path: 'https://travel.jasper1im.top/', label: '巴蜀文化', external: true },
+  { path: '/about', label: '关于', external: false },
 ]
 
 export default function Navbar() {
@@ -46,6 +47,21 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
+              if (link.external) {
+                return (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative font-mono text-sm tracking-wider transition-colors duration-300 py-1 text-gray-400 hover:text-white flex items-center gap-1"
+                  >
+                    {link.label}
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                )
+              }
+
               const isActive = location.pathname === link.path ||
                 (link.path !== '/' && location.pathname.startsWith(link.path))
               return (
@@ -79,6 +95,21 @@ export default function Navbar() {
         {menuOpen && (
           <div className="md:hidden py-4 border-t border-dark-border/50 animate-fade-in-up">
             {navLinks.map((link) => {
+              if (link.external) {
+                return (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-3 px-4 font-mono text-sm transition-colors rounded-lg text-gray-400 hover:text-white hover:bg-dark-surface flex items-center gap-2"
+                  >
+                    {link.label}
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                )
+              }
+
               const isActive = location.pathname === link.path
               return (
                 <Link
