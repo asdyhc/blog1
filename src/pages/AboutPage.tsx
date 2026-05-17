@@ -1,6 +1,7 @@
 import { Github, Twitter, Mail, Globe, Shield, Binary, Code2, Terminal, Cpu, MessageCircle } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 import GlowButton from '@/components/GlowButton'
+import ViewCounter from '@/components/ViewCounter'
 
 const skills = [
   { name: 'React / Vue', category: 'web' as const },
@@ -97,6 +98,15 @@ export default function AboutPage() {
           </div>
         </ScrollReveal>
 
+        <ScrollReveal delay={250}>
+          <div className="mb-12">
+            <h2 className="font-orbitron text-2xl font-bold text-white mb-8 text-center">
+              <span className="text-neon-cyan">$</span> 访问统计 <span className="text-neon-cyan">_</span>
+            </h2>
+            <ViewCounter />
+          </div>
+        </ScrollReveal>
+        
         <ScrollReveal delay={300}>
           <div className="text-center">
             <h2 className="font-orbitron text-2xl font-bold text-white mb-8">
