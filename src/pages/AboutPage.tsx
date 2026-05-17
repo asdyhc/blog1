@@ -1,4 +1,4 @@
-import { Github, Twitter, Mail, Globe, Shield, Binary, Code2, Terminal, Cpu } from 'lucide-react'
+import { Github, Twitter, Mail, Globe, Shield, Binary, Code2, Terminal, Cpu, MessageCircle } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 import GlowButton from '@/components/GlowButton'
 
@@ -121,10 +121,19 @@ export default function AboutPage() {
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="mailto:blog@codex.dev"
+                href="mailto:jasperworkzh@163.com"
                 className="w-12 h-12 rounded-xl bg-dark-card border border-dark-border/50 flex items-center justify-center text-gray-500 hover:text-white hover:border-dark-border hover:shadow-lg hover:shadow-neon-cyan/10 transition-all"
               >
                 <Mail className="w-5 h-5" />
+              </a>
+              <a
+                href="https://qm.qq.com/cgi-bin/qm/qr?k=2900248264"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-xl bg-dark-card border border-dark-border/50 flex items-center justify-center text-gray-500 hover:text-white hover:border-dark-border hover:shadow-lg hover:shadow-neon-cyan/10 transition-all"
+                  title="QQ: 2900248264"
+              >
+                <MessageCircle className="w-5 h-5" />
               </a>
             </div>
 
@@ -137,7 +146,7 @@ export default function AboutPage() {
                   </span>
                 </GlowButton>
               </a>
-              <a href="mailto:blog@codex.dev">
+              <a href="mailto:jasperworkzh@163.com">
                 <GlowButton color="#ff00aa">
                   <span className="flex items-center gap-2">
                     <Cpu className="w-4 h-4" />
