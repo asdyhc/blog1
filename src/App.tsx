@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Navbar from '@/components/Navbar'
 import MatrixBackground from '@/components/MatrixBackground'
 import ScanLine from '@/components/ScanLine'
@@ -23,6 +24,7 @@ export default function App() {
           </Routes>
         </div>
       </div>
+      <Analytics />
     </Router>
   )
 }
