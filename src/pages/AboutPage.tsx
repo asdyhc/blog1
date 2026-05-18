@@ -47,7 +47,7 @@ export default function AboutPage() {
           <div className="bg-dark-card border border-dark-border/50 rounded-2xl p-8 md:p-10 mb-12">
             <div className="font-mono text-sm leading-relaxed text-gray-400 space-y-4">
               <p>
-                <span className="text-neon-cyan">$</span> 一名热爱技术的全栈开发者，专注于 Web 开发、网络安全和算法研究。
+                <span className="text-neon-cyan">$</span> 专注于网络安全与CTF竞赛的白帽子，深耕Web渗透、内网横向与应急响应技术。
               </p>
               <p>
                 <span className="text-neon-magenta">$</span> 白天写代码构建 Web 应用，晚上在 CTF 中磨练渗透技巧，闲暇时在 LeetCode 上钻研算法。
